@@ -1,26 +1,26 @@
-.main-menu{
+.main-menu {
     display: flex;
     justify-content: space-between;
-    padding: 1em 0.5em;
-    background-color:  rgb( 245, 245, 245 );
+    padding: 1em 1.5em;
+    background-color: rgb( 245, 245, 245 );
 }
 
 .left-nav{
     float: left;
 }
 
-.nav{
-    display: flex;
-    flex-wrap: wrap;
+.right-nav{
+    float: right;
 }
 
-.nav a{
-    display: inline-block;
-    padding: 0.5em;
-    text-decoration: none;
-    color: initial;
+.d-bg-none{
+    display: block;
 }
 
+
+.d-bg-block{
+  display: none;   
+}
 .nav a.active {
     color: rgb( 64, 64, 64 );
     background-color: lightgrey;
@@ -31,21 +31,42 @@ a:hover{
     ;
 }
 
-.right-nav{
-    float: right;
+
+
+
+
+
+
+
+
+@media only screen and (min-width:700px) {
+
+    
+.nav {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.d-lg-none{
-    display: none;
-}
-
-
-
-@media only screen and (max-width: 600px) {
-   .d-sm-none{
-    display: none;
-   }
-   .d-lg-none{
+.d-bg-block{
     display: block;
-   }
-  }
+}
+
+.d-bg-none{
+    display: none;
+}
+
+.nav a {
+    display: inline-block;
+    padding: 0.5em;
+    text-decoration: none;
+    color: rgb( 160, 160, 160 );
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+    
+}
