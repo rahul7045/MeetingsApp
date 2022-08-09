@@ -4,18 +4,34 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="external css/normalize.css" />
-        <link rel="stylesheet" href="css/utils.css" />
-        <title>Meeting App</title>
+        <link rel="stylesheet" href="../external css/normalize.css" />
+        <link rel="stylesheet" href="../css/utils.css" />
+        <link rel="stylesheet" href="css/calender.css">
+        <title>Calender</title>
     </head>
     <body>
-        <nav>
-            <ul>
-                <li>Calender</li>
-                <li>Meeting</li>
-                <li>Teams</li>
+        <nav class="d-sm-none main-menu">
+           <div class="left-nav">
+               <ul class="nav list-unstyled">
+                <li> <a href="" class="active"> Calender</a></li>
+                <li><a href=""> Meeting </a></li>
+                <li><a href=""> Teams</a></li>
+               </ul>
+           </div>
+           <div class="right-nav ">
+             <div class="d-sm-none d-bg-block"><span>Hello Rahul </span> <span class="p-1"> <button type="button">Logout</button> </span></div>
+              <!--display in small screen-->
+             <div class="d-lg-none right-nav">
+                <ul class="nav list-unstyled">
+                    <li class="text-right">
+                        <button class="menu-toggler">Menu</button>
+                    </li>
+                </ul>
+            </div>
 
-            </ul>
+            <!--display in small screen-->
+            </div>
         </nav>
+
     </body>
 </html>

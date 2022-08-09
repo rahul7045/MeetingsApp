@@ -1,0 +1,51 @@
+.main-menu{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0.5em;
+    background-color:  rgb( 245, 245, 245 );
+}
+
+.left-nav{
+    float: left;
+}
+
+.nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav a{
+    display: inline-block;
+    padding: 0.5em;
+    text-decoration: none;
+    color: initial;
+}
+
+.nav a.active {
+    color: rgb( 64, 64, 64 );
+    background-color: lightgrey;
+}
+
+a:hover{
+    background-color: lightgrey
+    ;
+}
+
+.right-nav{
+    float: right;
+}
+
+.d-lg-none{
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+   .d-sm-none{
+    display: none;
+   }
+   .d-lg-none{
+    display: block;
+   }
+  }
