@@ -6,27 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../external css/normalize.css" />
     <link rel="stylesheet" href="../css/utils.css" />
-    <link rel="stylesheet" href="css/calender.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/pages/calender.css" />
+
+    <script defer src="js/nav-toggle.js"></script>
+
     <title>Calender</title>
 </head>
 <body>
-    <nav class="main-menu">
-  <div class="left-nav">
-    <span class="d-bg-none">Meeting App</span>
-    <ul class="nav list-unstyled d-bg-block">
-        <li> <a href="" class="active"> Calender</a></li>
-        <li><a href=""> Meeting </a></li>
-        <li><a href=""> Teams</a></li>
-       </ul>
+
+<nav class="main-menu">
+    <div class="left-nav ">
+       <span class="d-bg-none">Meeting App</span>
+            <ul class="nav list-unstyled d-bg-block">
+                <li> <a href="" class="active"> Calender</a></li>
+                <li><a href=""> Meeting </a></li>
+                <li><a href=""> Teams</a></li>
+            </ul>
+    </div>
+    <div class="right-nav">
+        <ul class="list-unstyled">
+            <li> <button id="menu-toggler" class="d-bg-none" type="button">Menu</button> 
+                <span class="d-bg-block">   <span class=>Hello Rahul </span> <span class="p-1"> <button type="button">Logout</button> </span></span>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+            <!--         Main Container      -->
+    <main class="container">
+  <h1>Calender</h1>
+  <hr/>
+  <!-- <div class="main">
+    <div>
+   <span class="date-float-left"><h2>12th Feb 2022</h2>  </span>
+    <span class="date-float-right">
+      <form action="">
+        <label class="visually-hidden" for="date">Birthday:</label>
+        <input type="date" id="date" name="date">
+      </form>
+   </span>
+</div>
+
+  </div> -->
+
+  <div class="main">
+    <div class="date-float-left">12th Feb 2022</div>
+    <div class="date-float-right">
+        <form action="" method="get">
+            <label class="visually-hidden" for="date">Birthday:</label>
+            <input type="date" id="date" name="date">
+          </form>
+    </div>
+    
   </div>
-  <div class="right-nav">
-    <ul class="list-unstyled">
-        <li> <button class="d-bg-none" type="button">Menu</button> 
-        <span class="d-bg-block">   <span class=>Hello Rahul </span> <span class="p-1"> <button type="button">Logout</button> </span></span>
-         </li>
-    </ul>
-  </div>
-    </nav>
-    <main></main>
+  <div class="date-box">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+    <div class="box">10</div>
+
+
+</div>
+
+    </main>
 </body>
 </html>

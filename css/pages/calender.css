@@ -1,0 +1,43 @@
+.container{
+    width: 80%;;
+    margin: 0 auto;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    
+}
+
+.date-float-right{
+    float: right;
+}
+
+.date-float-left{
+    float: left;
+}
+
+.date-box{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 0 auto;
+}
+
+.box{
+    background-color: lightblue;
+    min-width: 90%;
+    padding: 0.5em;
+
+
+}
