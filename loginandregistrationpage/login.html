@@ -4,29 +4,31 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="external css/normalize.css" />
-        <link rel="stylesheet" href="css/utils.css" />
-        <link rel="stylesheet" href="css/loginandregistration.css" />
+        <link rel="stylesheet" href="../external css/normalize.css" />
+        <link rel="stylesheet" href="../css/utils.css" />
+        <link rel="stylesheet" href="../css/loginandregistration.css" />
         <title>Login</title>
     </head>
     <body>
         <h1 class="align-center">Login Form</h1>
-        <form method="post">
+        <form action="https://mymeetingsapp.herokuapp.com/api/auth/login" method="post">
             <div class="container">
-                <label>Username : </label>
+                <label for="email" >Username : </label>
                 <input
                     type="text"
-                    id="username"
-                    placeholder="Enter Username"
-                    name="username"
+                    id="email"
+                    placeholder="Enter Your Email"
+                    name="email"
+                    required
                     
                 />
-                <label>Password : </label>
+                <label for="password" >Password : </label>
                 <input
                     type="password"
                     id="password"
                     placeholder="Enter Password"
                     name="password"
+                    required
                 
                 />
                 <div class="btn">
