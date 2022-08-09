@@ -1,0 +1,58 @@
+.container {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 25px;
+    
+    background-color: lightblue;
+}
+
+input[type=text],
+input[type=password] {
+    width: 60%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    display: block;
+    border: 2px solid green;
+    box-sizing: border-box;
+}
+
+label , input{
+    text-align: center;
+
+}
+
+button {
+    background-color: #4CAF50;
+    width: 25%;
+    display: inline-block;
+    border-radius: 5px;
+    color: black;
+    padding: 15px;
+    margin: 10px 0px;
+    margin-right: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+
+    input[type=text],
+    input[type=password] {
+        width: 100%;
+        margin: 8px 0;
+        padding: 12px 20px;
+        display: inline-block;
+        border: 2px solid green;
+        box-sizing: border-box;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+
+    button{
+        width: 100%;
+        display: block;
+    }
+
+}
