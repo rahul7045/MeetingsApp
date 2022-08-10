@@ -6,46 +6,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../external css/normalize.css" />
         <link rel="stylesheet" href="../css/utils.css" />
-        <link rel="stylesheet" href="../css/loginandregistration.css" />
-        <title>Register</title>
+        <link rel="stylesheet" href="../css/login-and-registration.css" />
+        <title>Login</title>
     </head>
     <body>
-        <h1 class="align-center">Registration Form</h1>
+        <h1 class="align-center">Login Form</h1>
         <form action="https://mymeetingsapp.herokuapp.com/api/auth/login" method="post">
             <div class="container">
-                <label for="email">E-mail : </label>
+                <label for="email" >Username : </label>
                 <input
-                    type="email"
+                    type="text"
                     id="email"
                     placeholder="Enter Your Email"
-                    name="username"
+                    name="email"
                     required
-
+                    
                 />
-                <label for="password">Password : </label>
+                <label for="password" >Password : </label>
                 <input
                     type="password"
                     id="password"
                     placeholder="Enter Password"
                     name="password"
                     required
-
-                />
-                <label for="confirmpassword">Confirm Password : </label>
-                <input
-                    type="password"
-                    id="confirmpassword"
-                    placeholder="Enter Confirm Password"
-                    name="confirmpassword"
-
+                
                 />
                 <div class="btn">
-                <button type="submit">Register</button>
-           <!--   <button>Login</button>  -->
-                </div>
-                <div class="signin">
-                    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+                <button type="submit">Login</button>
+                <!-- <button><a href="register.html" target="_blank" ></a>Register</button> -->
+                 </div>
+                 <div class="signin">
+                    <p>Already have an account? <a href="register.html">Sign Up</a>.</p>
                   </div>
+                
+
             </div>
         </form>
     </body>

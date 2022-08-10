@@ -1,0 +1,96 @@
+main{
+    margin: 10px 5% ;
+}
+
+.container-filter-main{
+  width: 90%;
+  background-color: lightblue;
+  border-radius: 10px;
+  border-top-left-radius: initial;
+}
+
+.flex-container-meeting{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.flex-container-meeting .box{
+    min-width: 20%;
+    color: blue;
+    background-color: white;
+}
+
+.box.active{
+   color: grey;
+}
+
+#filter-search{
+    padding: 0.5em;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+
+#add-meeting{
+    padding: 0.5em;
+    border: 1px solid black;
+    border-left: none;
+}
+
+.hr-3{
+
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 10px;
+
+}
+
+.date-pad{
+    padding-left: 20%;
+    font-weight: bold;
+    font-size: 23px;
+    padding-top: 10px;
+}
+
+#date-dropdown{
+    margin-left: 20% ;
+    margin-top: 5px;
+    padding: 5px 10px;
+    width: 60%;
+}
+
+
+#search-area{
+    margin-left: 20% ;
+    margin-top: 5px;
+    padding: 20px 10px;
+    width: 60%;
+}
+
+.fm-btn{
+   padding: 0.2em ;
+   background-color: blue;
+   color: white;
+   border-radius: 5px;
+   margin-bottom: 20px;
+}
+
+
+#search-meeting{
+    margin: 10px 5px;
+    font-weight: bold;
+    font-size: 29px;
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-width:700px){
+
+
+
+}

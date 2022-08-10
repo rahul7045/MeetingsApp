@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../external css/normalize.css" />
+    <link rel="stylesheet" href="../css/utils.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/pages/meeting.css" />
+    <title>Filter/Search</title>
+  </head>
+  <body>
+
+    <main>
+
+      <h1>Meetings</h1>
+
+      <div class="flex-container-meeting">
+            <div>
+            <button class="box active" id="filter-search" type="button">
+                Filter/Search Meeting
+            </button>
+            </div>
+
+            <div>
+            <button class="box" id="filter-search" type="button">
+                Add Meeting
+            </button>
+            </div>
+      </div>
+
+
+      <div class="container-filter-main">
+        <form action="">
+            <h2 class="date-pad">Search For Meeting</h2>
+             <hr class="hr-3" />
+
+            <div>
+                <div class="date-pad"><label for="date">Date</label></div>
+                    <select id="date-dropdown" name="date">
+                    <option value="-">All</option>
+                    <option value="mum">Past</option>
+                    <option value="blr">Today</option>
+                    <option value="del">Future</option>
+                    </select>
+            </div>
+
+                <div>
+                        <div class="date-pad"><label for="search">Search For</label></div>
+                            <input
+                            id="search-area"
+                            type="search"
+                            row="3"
+                            col="3"
+                            placeholder="Search using words which describe the meeting"
+                            />
+                </div>
+
+                <div class="date-pad">
+                    <button class="fm-btn" type="submit">Submit</button>
+                </div>
+        </form>
+      </div>
+
+
+      <!--Search meeting appear here-->
+
+      <h3 id="search-meeting">Meeting Matching Search Criteria</h3>
+
+    </main>
+  </body>
+</html>
