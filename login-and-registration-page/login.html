@@ -7,12 +7,19 @@
         <link rel="stylesheet" href="../external css/normalize.css" />
         <link rel="stylesheet" href="../css/utils.css" />
         <link rel="stylesheet" href="../css/login-and-registration.css" />
+
+        <script defer src="../js/services/auth.js"></script>
+        <script defer src="../js/pages/login.js"></script>
+
         <title>Login</title>
     </head>
     <body>
         <h1 class="align-center">Login Form</h1>
-        <form action="https://mymeetingsapp.herokuapp.com/api/auth/login" method="post">
+        <form id="login-form" action="https://mymeetingsapp.herokuapp.com/api/auth/login" method="post">
             <div class="container">
+
+                <!--Username-->
+                <div class="form-group">
                 <label for="email" >Username : </label>
                 <input
                     type="text"
@@ -22,6 +29,10 @@
                     required
                     
                 />
+                <span class="message message-error"></span>
+                </div>
+              <!--password-->
+                <div class="form-group">
                 <label for="password" >Password : </label>
                 <input
                     type="password"
@@ -29,8 +40,10 @@
                     placeholder="Enter Password"
                     name="password"
                     required
-                
                 />
+                <span class="message message-error"></span>
+                </div>
+                <!--Btn-->
                 <div class="btn">
                 <button type="submit">Login</button>
                 <!-- <button><a href="register.html" target="_blank" ></a>Register</button> -->

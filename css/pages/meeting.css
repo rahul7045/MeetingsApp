@@ -44,6 +44,13 @@ main{
     margin-top: 10px;
 
 }
+.hr-2{
+
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+
+}
 
 .date-pad{
     padding-left: 20%;
@@ -83,6 +90,47 @@ main{
 }
 
 
+/* meeting list  */
+
+.search-meeting-list{
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.search-meeting-list .boxes{
+
+    width: 90%;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+}
+
+.red-btn{
+    padding: 0.3em;
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    margin: 5px ;
+    font-size: 70%;
+
+}
+
+.p-2{
+    padding-left: 10%;
+    font-weight: bold;
+    font-size: 70%px;
+    padding-top: 10px;
+
+}
+
+.add-attendes{
+    background-color: blue;
+    color: white;
+    padding: 0.2em;
+    margin-left: 5%;
+}
+
+
 
 
 
@@ -91,6 +139,15 @@ main{
 
 @media only screen and (min-width:700px){
 
+.search-meeting-list{
+    justify-content: space-around;
 
+}
+
+.search-meeting-list .boxes{
+  width: 30%;
+  border: 1px solid black;
+  margin: 1em;
+}
 
 }
