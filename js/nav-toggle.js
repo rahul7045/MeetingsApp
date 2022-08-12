@@ -1,7 +1,6 @@
-const menuToggler = document.getElementById( 'menu-toggler' );
-const leftNav = document.querySelector( 'ul' );
+const menuToggler = document.querySelector( '.menu-toggler' );
+const nav = document.querySelector( '.navbar' );
 
 menuToggler.onclick = function() {
-    leftNav.classList.toggle( 'd-bg-block' );
+nav.classList.toggle( 'd-sm-none' );
 };
-
