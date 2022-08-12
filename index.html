@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css/pages/calender.css" />
 
     <script defer src="js/nav-toggle.js"></script>
+    <script defer src="/js/services/auth.js"></script>
+    <script defer src="js/services/meetings.js"></script>
+    <script defer src="js/pages/calender.js"></script>
 
     <title>Calender</title>
 </head>
@@ -67,27 +70,43 @@
   </div> -->
 
   <div class="main">
-    <div class="date-float-left">12th Feb 2022</div>
+    <div id="date" class="date-float-left"></div>
         <div class="date-float-right">
             <form action="" method="get">
                 <label class="visually-hidden" for="date">Birthday:</label>
-                <input type="date" id="date" name="date">
+                <input type="date" id="selectedDate">
               </form>
         </div>
     
      </div>
-          <div class="date-box">
-            <div class="box">1</div>
-            <div class="box">2</div>
-            <div class="box">3</div>
-            <div class="box">4</div>
-            <div class="box">5</div>
-            <div class="box">6</div>
-            <div class="box">7</div>
-            <div class="box">8</div>
-            <div class="box">9</div>
-            <div class="box">10</div>
 
+     <!-- <div class="message message-info hide"></div> -->
+     <!-- <div class="message message-error hide"></div> -->
+            <div class="date-box">
+            <div id="1" class="box">1</div>
+            <div id="2" class="box">2</div>
+            <div id="3" class="box">3</div>
+            <div id="4" class="box">4</div>
+            <div id="5" class="box">5</div>
+            <div id="6" class="box">6</div>
+            <div id="7" class="box">7</div>
+            <div id="8" class="box">8</div>
+            <div id="9" class="box">9</div>
+            <div id="10" class="box">10</div>
+            <div id="11" class="box">11</div>
+            <div id="12" class="box">12</div>
+            <div id="13" class="box">13</div>
+            <div id="14" class="box">14</div>
+            <div id="15" class="box">15</div>
+            <div id="16" class="box">16</div>
+            <div id="17" class="box">17</div>
+            <div id="18" class="box">18</div>
+            <div id="19" class="box">19</div>
+            <div id="20" class="box">20</div>
+            <div id="21" class="box">21</div>
+            <div id="22" class="box">22</div>
+            <div id="23" class="box">23</div>
+            <div id="00" class="box">00</div>
 
           </div>
 

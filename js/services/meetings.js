@@ -1,7 +1,8 @@
-const getMeetings = function(){
-     return fetch( ` https://mymeetingsapp.herokuapp.com/api/calendar?date= {date} ` ,
+const getMeetings = function(date){
+     return fetch( `https://mymeetingsapp.herokuapp.com/api/calendar?date=${date}` ,
             {
-            headers : {       
+            headers : {     
+                'Content-Type' : `application/json` ,  
                 'Authorization': `${getToken()}`
             }
             }
