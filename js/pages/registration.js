@@ -1,14 +1,19 @@
 (function(){
-    let loginForm;
+    let RegistrationForm;
     let usernameEl; 
     let passwordEl ;
+    let nameEl; 
+    let confirmPasswordEl; 
+
 
     function addEventListener(){
-        loginForm.addEventListener('submit' , function(event){
+        RegistrationForm.addEventListener('submit' , function(event){
             event.preventDefault();
 
+            nameEl = document.getElementById('name');
             usernameEl = document.getElementById('email');
             passwordEl = document.getElementById('password');
+            confirmPasswordEl = document.getElementById('confirmpassword');
 
 
 
@@ -56,22 +61,45 @@
                 messageEl.innerHTML = error;
             }
 
+            function validateConfirmPassword() {
+                const password = passwordEl.value.trim();
+                const confirmPassword = confirmPasswordEl.value.trim();
+                const formGroupEl = confirmPasswordEl.closest('.form-group');
+                const messageEl = formGroupEl.querySelector('.message');
+
+                let error = '';
+
+                if (password !== confirmPassword) {
+                    error += 'Password and confirm password must match';
+                }
+
+                messageEl.innerHTML = error;
+            }
+
+
             usernameEl.addEventListener('blur', validateUsername);
             usernameEl.addEventListener('input', validateUsername);
 
             passwordEl.addEventListener('blur', validatePassword);
             passwordEl.addEventListener('input', validatePassword);
 
+            confirmPasswordEl.addEventListener('blur', validateConfirmPassword);
+            confirmPasswordEl.addEventListener('input',validateConfirmPassword);
+
+
+
             const credential = {
+                name : nameEl.value.trim(),
                 email : usernameEl.value.trim(),
-                password : passwordEl.value.trim()
+                password : passwordEl.value.trim(),
+       //         confirmPassword : confirmPasswordEl.value.trim()
             }
 
-            login(credential)
+            addPerson(credential)
                 .then(
-                    function(loginResponse){
-                        console.log(loginResponse)
-                        window.location.href = '../index.html';
+                    function(registerResponse){
+                        console.log(registerResponse)
+                        window.location.href = 'login.html';
                     }
                 )
                 .catch(
@@ -84,7 +112,7 @@
     }
 
     window.addEventListener('load' , function(){
-        loginForm = document.getElementById('login-form');
+        RegistrationForm = document.getElementById('register-form');
         addEventListener();
     })
 }

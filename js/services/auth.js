@@ -16,5 +16,19 @@ function login( credentials ){
 
             return response.json();
         }
+    )
+    .then(
+        function(loginResponse){
+            localStorage.setItem('email' , loginResponse.email );
+            localStorage.setItem('token' , loginResponse.token );
+            localStorage.setItem('name' , loginResponse.name );
+
+            return loginResponse
+
+        }
     );
+}
+
+function getToken(){
+    return localStorage.getItem('token');
 }

@@ -7,45 +7,74 @@
         <link rel="stylesheet" href="../external css/normalize.css" />
         <link rel="stylesheet" href="../css/utils.css" />
         <link rel="stylesheet" href="../css/login-and-registration.css" />
+
+
+        <script defer src="../js/services/addRegistration.js"></script>
+        <script defer src="../js/pages/registration.js"></script>
+
         <title>Register</title>
     </head>
     <body>
         <h1 class="align-center">Registration Form</h1>
-        <form action="https://mymeetingsapp.herokuapp.com/api/auth/login" method="post">
+        <form id="register-form" action="https://mymeetingsapp.herokuapp.com/api/auth/register" method="post">
             <div class="container">
-                <label for="email">E-mail : </label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter Your Email"
-                    name="username"
-                    required
+                <div class="form-group">
+                    <label for="email">Name : </label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter Your Name"
+                        name="name"
+                        required
+    
+                    />
+                    <span class="message message-error"></span>
 
-                />
-                <label for="password">Password : </label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    required
-
-                />
-                <label for="confirmpassword">Confirm Password : </label>
-                <input
-                    type="password"
-                    id="confirmpassword"
-                    placeholder="Enter Confirm Password"
-                    name="confirmpassword"
-
-                />
-                <div class="btn">
-                <button type="submit">Register</button>
-           <!--   <button>Login</button>  -->
                 </div>
-                <div class="signin">
-                    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
-                  </div>
+                <div class="form-group">
+                    <label for="email">E-mail : </label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter Your Email"
+                        name="username"
+                        required
+
+                    />
+                    <span class="message message-error"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="password">Password : </label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        required
+
+                    />
+                    <span class="message message-error"></span>
+
+                </div>   
+                <div class="form-group">
+                    <label for="confirmpassword">Confirm Password : </label>
+                    <input
+                        type="password"
+                        id="confirmpassword"
+                        placeholder="Enter Confirm Password"
+                        name="confirmpassword"
+
+                    />
+                    <span class="message message-error"></span>
+
+                </div>  
+                    <div class="btn">
+                       <button type="submit">Register</button>
+                    </div>
+                    <div class="signin">
+                        <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+                    </div>
             </div>
         </form>
     </body>
