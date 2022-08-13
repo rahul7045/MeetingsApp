@@ -19,9 +19,12 @@
 
    function addEventListeners(){
      dateEl.addEventListener('input' , function(){
-         const formattedDate = dateEl.value;       
+
+         let formattedDate = dateEl.value;  
+              
         console.log(formattedDate);
-     })   
+        fetchMeetings(formattedDate);
+     });   
  }
 
 
@@ -30,7 +33,7 @@
 // window load event
 
     window.addEventListener('load' , function(){
-        dateEl = document.getElementById('selecteddate');
+        dateEl = document.getElementById('selectedDate');
 
         const today = new Date();
         const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
