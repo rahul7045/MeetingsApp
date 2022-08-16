@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="../css/utils.css" />
     <link rel="stylesheet" href="css/nav.css" />
     <link rel="stylesheet" href="css/pages/meeting.css" />
+
+
+    <script defer src="/js/services/auth.js"></script>
+    <script defer src="/js/services/meetings.js"></script>
+    <script defer src="/js/pages/filter-meeting.js"></script>
+
     <title>Filter/Search</title>
   </head>
   <body>
@@ -15,6 +21,8 @@
     <main>
 
       <h1>Meetings</h1>
+
+      <!--tab -->
 
       <div class="flex-container-meeting">
             <div>
@@ -24,29 +32,29 @@
             </div>
 
             <div>
-            <button class="box" id="filter-search" type="button">
+            <a href="add-meeting.html"><button class="box" id="filter-search" type="button">
                 Add Meeting
-            </button>
+            </button></a>
             </div>
       </div>
 
-
+  <!--filter form-->
       <div class="container-filter-main">
-        <form action="">
+        <form action="" id="filter-form" method="get">
             <h2 class="date-pad">Search For Meeting</h2>
              <hr class="hr-3" />
 
-            <div>
+            <div class="form-group">
                 <div class="date-pad"><label for="date">Date</label></div>
                     <select id="date-dropdown" name="date">
-                    <option value="-">All</option>
-                    <option value="mum">Past</option>
-                    <option value="blr">Today</option>
-                    <option value="del">Future</option>
+                    <option selected value="all">All</option>
+                    <option  value="past">Past</option>
+                    <option value="present">Today</option>
+                    <option value="future">Future</option>
                     </select>
             </div>
 
-                <div>
+                <div class="form-group">
                         <div class="date-pad"><label for="search">Search For</label></div>
                             <input
                             id="search-area"
@@ -68,9 +76,9 @@
 
       <h3 id="search-meeting">Meeting Matching Search Criteria</h3>
 
-      <div- class="search-meeting-list">
+      <div class="search-meeting-list">
 
-         <div class="boxes"> 
+         <!-- <div class="boxes"> 
             <div class="p-2"><span>12th Sept 2033</span> <span>06:00 to 7:00</span></div>
             <div class="p-2">Project Kick off</div>
             <div class="p-2"><button class="red-btn" type="button">Excuse Yourself</button></div>
@@ -112,7 +120,7 @@
             </div>
 
 
-         </div>         
+         </div>          -->
          
          
 
