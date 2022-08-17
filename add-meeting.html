@@ -12,13 +12,44 @@
 
 
 
-   <!-- <script defer src="js/nav-toggle.js"></script> -->
+   <script defer src="js/nav-toggle.js"></script> 
     <script defer src="/js/services/auth.js"></script>
     <script defer src="/js/services/meetings.js"></script>
     <script defer src="/js/pages/add-meeting.js"></script>
 
   </head>
   <body>
+
+    <header>
+      <div class="my-meetings d-lg-none">
+        <span>my meetings</span>
+        <a class="menu-toggler icon">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <nav id="nav-bar" class="navbar d-sm-none">
+        <ul class="nav-left">
+          <li>
+            <a href="index.html">Calandar</a>
+          </li>
+          <li class="active">
+            <a href="add-meeting.html">Meetings</a>
+          </li>
+          <li >
+            <a href="teams.html">Teams</a>
+          </li>
+        </ul>
+        <ul class="nav-right">
+          <li id="hello">
+            Hello <span id="display-uname">jane.doe@example.com</span>
+          </li>
+          <li id="logout">
+            <a href=""> Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    
 
     <main>
 
@@ -28,15 +59,15 @@
 
       <div class="flex-container-meeting">
             <div>
-            <a href="filter-meeting.html"><button class="box active" id="filter-search" type="button">
+            <a href="filter-meeting.html"><button class="box" id="filter-search" type="button">
                 Filter/Search Meeting
             </button></a>
             </div>
 
             <div>
-            <button class="box" id="filter-search" type="button">
+            <a href="add-meeting.html"><button class="box active" id="filter-search" type="button">
                 Add Meeting
-            </button>
+            </button></a>
             </div>
       </div>
 

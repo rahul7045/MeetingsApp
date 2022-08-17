@@ -10,11 +10,13 @@
             const descriptionEl = document.getElementById( 'description' );
 
             const dateEl = document.getElementById( 'date' );
-            const starttimeEl = document.getElementById( 'start-time' );
-            const endtimeEl = document.getElementById( 'end-time' );
+            const starttimeEl = document.getElementById( 'start-time' ).value;
+            const endtimeEl = document.getElementById( 'end-time' ).value;
             const attendeesEl = document.getElementById('emails');
 
             let attendeesarrayEl = attendeesEl.value.split(',')
+            //console.log(starttimeEl[0]+starttimeEl[1]);
+            //console.log(endtimeEl);
            // console.log(attendeesarrayEl);
 
            let data = {
@@ -22,12 +24,12 @@
             description: descriptionEl.value.trim(),
             date: dateEl.value.trim(),
             startTime: {
-                hours : 10 ,
-                minutes : 11
+                hours : starttimeEl[0]+starttimeEl[1] ,
+                minutes : starttimeEl[3]+starttimeEl[4]
             },
             endTime: {
-                hours : 11,
-                minutes : 11
+                hours : endtimeEl[0]+endtimeEl[1],
+                minutes : endtimeEl[3]+endtimeEl[4]
             },
             attendees : attendeesarrayEl,
         };

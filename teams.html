@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="css/utils.css" />
     <link rel="stylesheet" href="css/nav.css" />
     <link rel="stylesheet" href="css/pages/meeting.css" />
+    <link rel="stylesheet" href="css/pages/teams.css" />
 
 
-    <!-- <script defer src="js/nav-toggle.js"></script> -->
+
+    <script defer src="js/nav-toggle.js"></script> 
     <script defer src="js/services/auth.js"></script>
     <script defer src="js/services/meetings.js"></script>
     <script defer src="js/pages/teams.js"></script>
@@ -19,6 +21,37 @@
     <title>Teams</title>
  </head>
  <body>
+
+    <header>
+        <div class="my-meetings d-lg-none">
+          <span>my meetings</span>
+          <a class="menu-toggler icon">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+        <nav id="nav-bar" class="navbar d-sm-none">
+          <ul class="nav-left">
+            <li >
+              <a href="index.html">Calandar</a>
+            </li>
+            <li>
+              <a href="add-meeting.html">Meetings</a>
+            </li>
+            <li class="active" >
+              <a href="teams.html">Teams</a>
+            </li>
+          </ul>
+          <ul class="nav-right">
+            <li id="hello">
+              Hello <span id="display-uname">jane.doe@example.com</span>
+            </li>
+            <li id="logout">
+              <a href=""> Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      
    <h1>checking teams</h1>
     
     <!-- <div class="search-meeting-list">
@@ -71,5 +104,37 @@
 
         </div> -->
     
+
+        <div class="search-meeting-list" id="team-list">
+       </div>
+
+       <div class="boxes" >
+        <span class="plus"> + </span>
+        <form id="add-team" action="">
+          <div class="form-group">
+              <label for="team-name"></label>
+              <input placeholder="Team Name" id="team-name" type="text">
+          </div>
+          <div class="form-group">
+              <label for="team-short-name"></label>
+              <input placeholder="Short Team Name" id="team-short-name" type="text">
+          </div>
+          <div class="form-group">
+              <label for="team-description"></label>
+              <input placeholder="Team description" id="team-description" type="text">
+          </div>
+          <div class="form-group">
+          <div><label for="email">Attendees</label></div>
+              <select id="email-dropdown" name="email">
+              <option value="">--</option>
+              <option  value="rahul@example.com">rahupujai@gmail.com</option>
+              <option value="rahulpujari525@gmail.com">rahul1</option>
+              <option value="rahul525@yahoo.com">rahul2</option>
+              </select>
+      </div>
+          <button type= "submit" >Add Teams</button>
+        </form>
+      </div>
+  
  </body>
  </html>
