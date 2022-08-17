@@ -146,6 +146,8 @@ const deleteTeams = function(teamId){
     )
 }
 
+//delete meeting 
+
 const deleteMeetings =  function(meetingId){
     return fetch(
         `https://mymeetingsapp.herokuapp.com/api/meetings/${meetingId}?action=remove_attendee`,
@@ -166,3 +168,28 @@ const deleteMeetings =  function(meetingId){
         }
     )
 }
+
+
+// get all user
+const getAll = function(){
+    return (
+        `https://mymeetingsapp.herokuapp.com/api/users` ,
+        {
+            headers:{
+                'Authorization': getToken() ,
+                "Content-Type": "application/json",
+
+            }
+        }
+    ).then(
+        function(response){
+            if(!response.ok){
+                throw new Error(response.statusText);
+            }
+
+            return response.json();
+        }
+    )
+}
+
+

@@ -6,7 +6,6 @@
    let searchMeetingListStr= ""
    let searchMeeting ;
 
-
    function showMeetings(meetings){
 
 
@@ -80,7 +79,6 @@
 
 }
 
-
     function fetchMeetings(period , searchEl){
 
         getFilterMeeting(period , searchEl)
@@ -97,16 +95,14 @@
             console.log(error.message)
         } )
     }
-
-    
-
+  
     function addEventListenersFilter(){
         filter.addEventListener('submit' , function(event){
           period = document.getElementById('date-dropdown').value;
           searchEl = document.getElementById('search-area').value;
           event.preventDefault();
 
-
+          searchMeetingListStr="";
 
           console.log(period);
           console.log(searchEl)
@@ -138,7 +134,6 @@
         })
     }
 
-
     window.addEventListener('load' , function(){
        filter = document.getElementById('filter-form') ;
        searchMeeting = document.getElementById('meeting-list');
@@ -148,6 +143,7 @@
       // fetchMeeting1 = document.getElementById('filter-form');
 
       // fetchMeetings("all" , "");
+      fetchMeetings("all" , "rahul");
 
        addEventListenersFilter();
 

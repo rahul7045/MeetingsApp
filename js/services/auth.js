@@ -29,6 +29,10 @@ function login( credentials ){
     );
 }
 
+function logout(){
+    localStorage.clear();
+}
+
 function getToken(){
     return localStorage.getItem('token');
 }

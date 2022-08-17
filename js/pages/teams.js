@@ -80,7 +80,7 @@ function addEventListeneraddTeam(){
 
      })
      searchTeam.innerHTML = searchteamstrList;
-     deleteTeamItem()
+     //deleteTeamItem()
 
 
     }
