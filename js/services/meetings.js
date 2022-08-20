@@ -172,7 +172,7 @@ const deleteMeetings =  function(meetingId){
 
 // get all user
 const getAll = function(){
-    return (
+    return fetch (
         `https://mymeetingsapp.herokuapp.com/api/users` ,
         {
             headers:{
@@ -191,5 +191,11 @@ const getAll = function(){
         }
     )
 }
+
+// const AddMember = function(email , teamid){
+//     return fetch(
+//         ``
+//     )
+// }
 
 
