@@ -1,11 +1,16 @@
 import  {addMeeting , getMeetings , filterMeetings , excuseYourself , addAttendee} from '../services/get-meetings'
 import {Meeting} from '../models/Meetings';
+import {getUserID} from '../services/get-id'
+import {AllUser} from '../models/AllUser'
 class displayFilter {
-  const searchMeetingForm : HTMLElement | null = null;
-   showMeetings =(meetings : )  =>{
-    const searchMeetingList = document.querySelector(".meeting-card-container");
+   allUsers:  AllUser[] =[];
+   searchMeetingForm : HTMLFormElement | null = null;
+
+
+   showMeetings = (meetings : Meeting[] )  =>{
+    const searchMeetingList : HTMLElement = document.querySelector(".meeting-card-container") as HTMLElement;
     let allUsersOptionsStr = "";
-    allUsers.forEach(function (user) {
+    this.allUsers.forEach(function (user) {
       allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
     });
 
@@ -18,31 +23,31 @@ class displayFilter {
       let year =
         meeting.date[0] + meeting.date[1] + meeting.date[2] + meeting.date[3];
       let day = meeting.date[8] + meeting.date[9];
-      let month = meeting.date[5] + meeting.date[6];
+      let month   = meeting.date[5] + meeting.date[6];
 
-      if (month == 01) {
+      if (month == "01") {
         month = `January`;
-      } else if (month == 02) {
+      } else if (month == "02") {
         month = `February`;
-      } else if (month == 03) {
+      } else if (month == "03") {
         month = `March`;
-      } else if (month == 04) {
+      } else if (month == "04") {
         month = `April`;
-      } else if (month == 05) {
+      } else if (month == "05") {
         month = `May`;
-      } else if (month == 06) {
+      } else if (month == "06") {
         month = `June`;
-      } else if (month == 07) {
+      } else if (month == "07") {
         month = `July`;
-      } else if (month == 08) {
+      } else if (month == "08") {
         month = `August`;
-      } else if (month == 09) {
+      } else if (month == "09") {
         month = `September`;
-      } else if (month == 10) {
+      } else if (month == "10") {
         month = `October`;
-      } else if (month == 11) {
+      } else if (month == "11") {
         month = `November`;
-      } else if (month == 12) {
+      } else if (month == "12") {
         month = `December`;
       }
 
@@ -78,16 +83,16 @@ class displayFilter {
     searchMeetingList.innerHTML = searchMeetingListStr;
   }
 
-  function showSearchMeetings() {
-    searchMeetingForm.addEventListener("submit", function (event) {
-      let periodField = document.getElementById("period").value;
-      let searchEl = document.getElementById("search").value;
+   showSearchMeetings =() => {
+    (this.searchMeetingForm as HTMLElement).addEventListener("submit",  (event) => {
+      let periodField = (document.getElementById("period") as HTMLInputElement).value;
+      let searchEl = (document.getElementById("search") as HTMLInputElement).value;
       event.preventDefault();
-      selectInput = document.querySelector(".select-input");
+      const selectInput  = document.querySelector(".select-input") as HTMLElement;
 
       filterMeetings(periodField, searchEl)
-        .then(function (meetings) {
-          showMeetings(meetings);
+        .then( (meetings) => {
+        this.showMeetings(meetings);
         })
         .catch(function (error) {
           alert(error.message);
@@ -95,20 +100,21 @@ class displayFilter {
     });
   }
 
-  function getAllUsers() {
+   getAllUsers =() => {
     getUserID()
       .then(function (response) {
         console.log(response);
         return response;
       })
-      .then(function (users) {
-        allUsers = users;
+      .then( (users) => {
+        this.allUsers = users;
       });
   }
 
-  window.addEventListener("load", function () {
-    searchMeetingForm = document.getElementById("search-meeting-form");
-    getAllUsers();
-    showSearchMeetings();
-  });
-})();
+  load = () =>{
+    this.searchMeetingForm  = document.getElementById("search-meeting-form") as HTMLFormElement;
+    this.getAllUsers();
+    this.showSearchMeetings();
+  };
+
+};

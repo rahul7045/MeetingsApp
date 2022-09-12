@@ -21,6 +21,6 @@
 
       });
   }
-  getUserID();
+  export {getUserID}
 
   
