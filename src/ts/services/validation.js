@@ -1,11 +1,11 @@
-const passwordEl = document.querySelector("#password") as HTMLInputElement;
-const confirmPasswordEl = document.querySelector("#confirm-password") as HTMLInputElement;
-const emailEl = document.querySelector("#email") as HTMLInputElement;
+const passwordEl = document.querySelector("#password");
+const confirmPasswordEl = document.querySelector("#confirm-password");
+const emailEl = document.querySelector("#email");
 
 function validatePassword() {
   const password = passwordEl.value.trim();
-  const formGroupEl = passwordEl.closest(".form-group") as HTMLElement;
-  const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+  const formGroupEl = passwordEl.closest(".form-group");
+  const messageEl = formGroupEl.querySelector(".message");
 
   let error = "";
 
@@ -47,8 +47,8 @@ function validatePassword() {
 function validateConfirmPassword() {
   const password = passwordEl.value.trim();
   const confirmPassword = confirmPasswordEl.value.trim();
-  const formGroupEl = confirmPasswordEl.closest(".form-group") as HTMLElement;
-  const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+  const formGroupEl = confirmPasswordEl.closest(".form-group");
+  const messageEl = formGroupEl.querySelector(".message");
 
   let error = "";
 
@@ -63,11 +63,11 @@ function validateConfirmPassword() {
 
 function validateEmail() {
   // for event listeners, this -> element where event happens (usernameEl)
-  //console.log("this = ", this);
+  console.log("this = ", this);
 
   const email = emailEl.value.trim();
-  const formGroupEl = emailEl.closest(".form-group") as HTMLElement;
-  const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+  const formGroupEl = emailEl.closest(".form-group");
+  const messageEl = formGroupEl.querySelector(".message");
 
   let error = "";
 
@@ -103,15 +103,18 @@ function validate() {
   return isValid;
 }
 
-const form = document.querySelector("#register-form") as HTMLFormElement;
+const form = document.querySelector("#register-form");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   if (validate()) {
     // if all fields are valid
-    // this.submit();
+    this.submit();
     this.reset();
-    validate();
+    // validate();
+  }
+  else{
+    alert(Response);
   }
 });

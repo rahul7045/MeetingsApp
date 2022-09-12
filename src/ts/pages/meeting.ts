@@ -44,3 +44,5 @@ class Meeting {
     this.addEventListeners();
   }
 }
+
+export {Meeting}

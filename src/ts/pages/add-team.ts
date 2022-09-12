@@ -1,21 +1,23 @@
 import {getUserID} from '../services/get-id';
 import {getTeams , addTeam , excuseYourself , addMember} from '../services/teams'
+import {Team} from '../models/Team';
 
 
-let membersArray = [];
-function appendMembers(member) {
+
+let membersArray: string[] = [];
+function appendMembers(member : string) {
   membersArray.push(member);
   const memberNode = document.createTextNode(`,${member}`);
-  document.querySelector(".rehan").appendChild(memberNode);
+  (document.querySelector(".rehan") as HTMLElement).appendChild(memberNode);
 }
 
-(function () {
-  const addTeamsList = document.querySelector(".members");
-  let allUsers = [];
-  function showUsersDropdown() {
+class addTeam {
+  const addTeamsList = document.querySelector(".members") as HTMLElement;
+   allUsers: any[] = [];
+   showUsersDropdown =() => {
     let allUsersOptionsStr = "";
     let addTeamsListStr = "";
-    allUsers.forEach(function (user) {
+    this.allUsers.forEach(function (user) {
       allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
     });
 
@@ -32,52 +34,39 @@ function appendMembers(member) {
       </div>
       `;
 
-    addTeamsList.innerHTML = addTeamsListStr;
+    this.addTeamsList.innerHTML = addTeamsListStr;
     return allUsersOptionsStr;
   }
 
-  function getAllUsers() {
+   getAllUsers =()=> {
     return getUserID()
       .then(function (response) {
         console.log(response);
         return response;
       })
-      .then(function (users) {
-        allUsers = users;
+      .then( (users) {
+        this.allUsers = users;
       });
   }
-
-  window.addEventListener("load", function () {
-    let allUsersOptionsStr = "";
-    getAllUsers().then(function () {
-      showUsersDropdown();
-    });
-    allUsers.forEach(function (user) {
-      allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
-    });
-    addNewTeam(allUsersOptionsStr);
-  });
-})();
-
-console.log(membersArray);
-
-function addNewTeam(users) {
-  const addTeamForm = document.querySelector("#add-team");
+  
+ addNewTeam(users : string) {
+  const addTeamForm = document.querySelector("#add-team") as HTMLElement;
   // var users; //;
   addTeamForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let selectInput = document.getElementById("add-member");
+    let selectInput = document.getElementById("add-member") as HTMLElement;
     console.log(selectInput.innerHTML);
 
     let team = {
-      name: document.getElementById("team-name").value.trim(),
-      shortName: document.getElementById("team-short-name").value.trim(),
-      description: document.getElementById("team-description").value.trim(),
+      name: (document.getElementById("team-name") as HTMLInputElement).value.trim(),
+      shortName: (document.getElementById("team-short-name") as HTMLInputElement).value.trim(),
+      description: (document.getElementById("team-description") as HTMLInputElement).value.trim(),
       members: membersArray,
     };
     if (true) {
-      addTeam(team).then(function (addedTeam) {
+       addTeam(team )
+      .then( (addedTeam) {
         console.log(addedTeam._id);
 
         let newTeamMembers = addedTeam.members.map(function (newMember) {
@@ -118,13 +107,31 @@ function addNewTeam(users) {
        
         `;
 
-        const parentNode = document.querySelector(".card-collection");
+        const parentNode = document.querySelector(".card-collection") as HTMLElement;
         const childNode = document.createElement("div");
         childNode.innerHTML = addedNewTeam;
         parentNode.insertBefore(childNode, document.getElementById("add-team"));
         childNode.classList.add("card");
-        document.getElementById("add-team").classList.add("hide");
+        (document.getElementById("add-team") as HTMLElement).classList.add("hide");
       });
     }
   });
 }
+
+  load =() =>{
+    let allUsersOptionsStr = "";
+    this.getAllUsers().then( () => {
+      this.showUsersDropdown();
+    });
+    this.allUsers.forEach(function (user) {
+      allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
+    });
+    this.addNewTeam(allUsersOptionsStr);
+  };
+};
+
+
+
+
+//console.log(membersArray);
+export {addTeam}

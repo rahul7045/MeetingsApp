@@ -105,3 +105,5 @@ let month = [
   "November",
   "December",
 ];
+
+export{Calender}

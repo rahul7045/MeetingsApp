@@ -65,7 +65,7 @@ const getTeams = function () {
       let membersArray : string[] | null = null ;
       const memberNode = document.createTextNode(`,${userID}`)  
       memberList.appendChild(memberNode);
-      membersArray.append(memberList);
+      membersArray.append(memberList) ;
     
       console.log(membersArray);
       return response.json();
