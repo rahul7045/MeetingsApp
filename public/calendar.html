@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="View your daily Meetings here" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Meeting, Meetings App , Calendar, Teams">
+    <meta name="author" content="Rehan Pathan">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/nav-menu.css" />
+    <link rel="stylesheet" href="../css/calendar.css" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/utils.css" /> 
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script defer src="../services/get-calendar.js"></script>
+
+    <script defer src="../js/calendar.js"></script>
+
+    <script defer src="../js/nav-menu.js"></script>
+    
+    <script src="../services/check-login.js"></script>
+  </head>
+  <body> 
+    <header>
+
+      <div class="menu d-lg-none">
+
+        <span>My Meetings</span>
+
+        <a class="menu-toggler">
+          <i class="fa fa-bars"></i>
+        </a>
+
+      </div>
+
+      <nav class="navbar d-sm-none">
+
+        <ul class="left-nav list-unstyle">
+          <li class="active">
+            <a href="calendar.html" class="link-unstyle">Calendar</a>
+          </li>
+          <li><a href="meetings.html" class="link-unstyle">Meetings</a></li>
+          <li><a href="teams.html" class="link-unstyle">Teams</a></li>
+        </ul>
+        <ul class="right-nav list-unstyle">
+          <li>Hello<a href="#" class="link-unstyle" id="user"></a></li>
+          <li ><a href="login.html" class="link-unstyle" id="logout">Logout</a></li>
+        </ul>
+
+      </nav>
+
+    </header>
+
+    <div id="date">
+      <h1>Calendar</h1>
+      <hr />
+      <div class="date">
+        <div class="day">
+          <span id="date-now"></span>
+          <span id="day-now"></span>
+        </div>
+        <div>
+          <label for="date-selected" class="visually-hidden">today's date</label>
+          <input type="date" id="date-selected" name="date" />
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="calendar-cont">
+        <table class="day-span">
+          <tr>
+            <td class="hour">0</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">1</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">2</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">3</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">4</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">5</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">6</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">7</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">8</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">9</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">10</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">11</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">12</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">13</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">14</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">15</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">16</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">17</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">18</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">19</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">20</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">21</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">22</td>
+            <td id="hour-1" class="time"></td>
+          </tr>
+          <tr>
+            <td class="hour">23</td>
+            <td id="hour-0" class="time"></td>
+          </tr>
+        </table>
+        <div class="meet-cont"></div>
+      </div>
+    </main>
+    <script>
+      let selectLogout = document.getElementById("logout");
+        selectLogout.addEventListener("click", function () {
+        localStorage.clear();
+    });
+    </script>
+  </body>
+</html>

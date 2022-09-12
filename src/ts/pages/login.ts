@@ -1,107 +1,35 @@
-(function(){
-    let loginForm;
-    let usernameEl; 
-    let passwordEl ;
+import { loginUser } from '../services/auth-login';
 
-    function addEventListener(){
-        loginForm.addEventListener('submit' , function(event){
-            event.preventDefault();
+class Login {
+   LogDetails : HTMLElement | null = null;
 
-            usernameEl = document.getElementById('email');
-            passwordEl = document.getElementById('password');
+  addEventListener =() => {
+    ( this.LogDetails as HTMLFormElement ).addEventListener( 'submit', function( event ) {
+      event.preventDefault();
 
+      const creds = {
 
+        email: (document.getElementById("email") as HTMLInputElement).value.trim(),
 
-            function validateUsername() {
-                // for event listeners, this -> element where event happens (usernameEl)
+        password: (document.getElementById("password") as HTMLInputElement).value.trim(),
 
-                const username = this.value.trim();
-                const formGroupEl = this.closest('.form-group');
-                const messageEl = formGroupEl.querySelector('.message');
-
-                let error = '';
-
-                if (username.length < 8) {
-                    error +=
-                        '<div>Username must be at least 8 characters long</div>';
-                }
-                
-                messageEl.innerHTML = error;
-            }
-
-
-            function validatePassword() {
-                const password = this.value.trim();
-                const formGroupEl = this.closest('.form-group');
-                const messageEl = formGroupEl.querySelector('.message');
-
-                let error = '';
-
-                if (!password) {
-                    error += "<div>Password cannot be empty</div>";
-                  } else {
-                    // uppercase
-                    const uppercasePat = /[A-Z]/;
-                    if (!uppercasePat.test(password)) {
-                      error += "<div>Password must have an uppercase character</div>";
-                    }
-                
-                    // lowercase
-                    const lowercasePat = /[a-z]/;
-                    if (!lowercasePat.test(password)) {
-                      error += "<div>Password must have a lowercase character</div>";
-                    }
-                
-                    // digit
-                    const digitPat = /[0-9]/;
-                    if (!digitPat.test(password)) {
-                      error += "<div>Password must have a digit</div>";
-                    }
-                
-                    // special characters
-                    const specialPat = /[!@#$%^&*()]/;
-                    if (!specialPat.test(password)) {
-                      error += "<div>Password must have a special character</div>";
-                    }
-                  }
-                
-
-                messageEl.innerHTML = error;
-            }
-
-            usernameEl.addEventListener('blur', validateUsername);
-            usernameEl.addEventListener('input', validateUsername);
-
-            passwordEl.addEventListener('blur', validatePassword);
-            passwordEl.addEventListener('input', validatePassword);
-
-            const credential = {
-                email : document.getElementById('email').value.trim(),
-                password : document.getElementById('password').value.trim()
-            }
-
-            login(credential)
-                .then(
-                    function(loginResponse){
-                        console.log(loginResponse)
-                        window.location.href = '../index.html';
-                    }
-                )
-                .catch(
-                    function( error ) {
-                        alert( "UserName or Password is wrong" );
-                    }
-                );
-
+      };
+      loginUser(creds)
+        .then(function (loginResponse) {
+          console.log(loginResponse);
+          window.location.href = "../screens/calendar.html";
         })
-    }
+        
+        .catch(function (error) {
+          alert(error.response);
+        });
+    });
+  }
 
-    window.addEventListener('load' , function(){
-        loginForm = document.getElementById('login-form');
-        addEventListener();
-    })
+
+  load = () => {
+    this.LogDetails = document.getElementById( 'login-form' ) as HTMLFormElement;
+    
+    this.addEventListener();
 }
-)();
-
-
-
+}; 

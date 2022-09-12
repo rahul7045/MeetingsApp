@@ -1,0 +1,77 @@
+label , .btn {
+    font-family: sans-serif;
+    margin: 10px 10%;
+    font-family: sans-serif;
+}
+
+button {
+    background-color: rgb(164, 179, 179);
+    width: 50%;
+    display: inline-block;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    margin-left: 26%;
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: skyblue;
+}
+
+input[type=text],
+input[type=password],input[type=email] {
+    width: 80%;
+    margin: 10px 10%;
+    padding: 12px 20px;
+    display: block;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.hint{
+        text-align: center;
+}
+
+.message{
+    color: red;
+    text-align: center;
+}
+
+
+@media (max-width: 700px) {
+
+    input[type=text],
+    input[type=password],input[type=email] {
+        width: 100%;
+        margin: 8px 0;
+        padding: 12px 20px;
+        display: inline-block;
+        border: 1px solid black;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+
+    button{
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+        font-family: sans-serif;
+    }
+
+    label {
+        font-family: sans-serif;
+        margin: 10px 0;
+    }
+
+}

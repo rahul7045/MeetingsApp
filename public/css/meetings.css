@@ -1,0 +1,49 @@
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.meeting-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  word-break: break-all;
+}
+
+.excuse-yourself-btn {
+  padding: 0.5em;
+  background-color: crimson;
+  color: white;
+  border: 1px solid crimson;
+  border-radius: 5px;
+}
+
+.date {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.duration {
+  font-weight: 500;
+}
+
+.meeting-name {
+  font-weight: 500;
+}
+
+#date,
+#start-time,
+#end-time {
+  width: fit-content;
+}
+
+/*# sourceMappingURL=meetings.css.map */

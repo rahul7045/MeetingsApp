@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Filter your Meetings here" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Meeting, Meetings App , Calendar, Teams">
+    <meta name="author" content="Rehan Pathan">
+    <title>Meetings</title>
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/utils.css" />
+    <link rel="stylesheet" href="../css/nav-menu.css" />
+    <link rel="stylesheet" href="../css/tab.css" />
+    <link rel="stylesheet" href="../css/form-add.css" />
+    <link rel="stylesheet" href="../css/meetings.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script defer src="../js/nav-menu.js"></script>
+    <script defer src="../js/tab.js"></script>
+    <script defer src="../js/add-meeting.js"></script>
+    <script defer src="../js/user-id.js"></script>
+    <script defer src="../js/meeting.js"></script>
+    <script defer src="../services/get-id.js"></script>
+    <script defer src="../services/post-meetings.js"></script>
+
+    <script defer src="../services/get-meetings.js"></script>
+    <script defer src="../js/display-filter-meetings.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="menu d-lg-none">
+        <span>My Meetings</span>
+        <a class="menu-toggler">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <nav class="navbar d-sm-none">
+        <ul class="left-nav list-unstyle">
+          <li><a href="calendar.html" class="link-unstyle">Calendar</a></li>
+          <li class="active">
+            <a href="meetings.html" class="link-unstyle">Meetings</a>
+          </li>
+          <li><a href="teams.html" class="link-unstyle">Teams</a></li>
+        </ul>
+        <ul class="right-nav list-unstyle">
+          <li>Hello<a href="#" class="link-unstyle" id="user"></a></li>
+          <li>
+            <a href="login.html" class="link-unstyle" id="btn-logout">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Meetings</h1>
+      <hr />
+      <div class="tab">
+        <button
+          class="tablinks"
+          id="default-open"
+          onclick="opentab(event, 'filter')"
+        >
+          Filter / Search Meetings
+        </button>
+        <button class="tablinks" onclick="opentab(event, 'add')">
+          Add a Meeting
+        </button>
+      </div>
+
+      <div class="background">
+        <!--filter/search meetings-->
+        <div id="filter" class="tabcontent">
+          <div class="form-group form">
+            <h1>Search for meetings</h1>
+            <hr />
+            <form
+              class="container"
+              id="search-meeting-form"
+              method="get"
+              action="https://mymeetingsapp.herokuapp.com/api/meetings"
+            >
+              <div class="form-group">
+                <label for="period">Date</label>
+                <div class="margin-bottom">
+                  <select id="period" name="period">
+                    <option value="all">ALL</option>
+                    <option value="past">PAST</option>
+                    <option value="present">TODAY</option>
+                    <option value="future">UPCOMING</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="search">Search for</label>
+                <div>
+                  <textarea
+                    id="search"
+                    name="search"
+                    placeholder="Search using words which describe the meeting"
+                  ></textarea>
+                </div>
+              </div>
+
+              <button type="submit">Search</button>
+            </form>
+          </div>
+
+          <!--show filtered meetings-->
+          <div>
+            <h2>Meetings matching Search Criteria</h2>
+            <hr />
+            <div class="meeting-card-container"></div>
+          </div>
+        </div>
+
+        <!--add a new meeting-->
+        <div id="add" class="tabcontent">
+          <div class="form-group form">
+            <h1>Add a new meeting</h1>
+            <hr />
+            <form
+              class="container"
+              id="add-meeting-form"
+              method="post"
+              action="https://mymeetingsapp.herokuapp.com/api/meetings"
+            >
+              <div class="form-group">
+                <label for="meeting-name">Meeting name</label>
+                <div class="margin-bottom">
+                  <input type="text" id="meeting-name" name="meeting-name" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Date</label>
+                <div class="margin-bottom">
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    placeholder="dd/mm/yy"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="start-time">Start time</label>
+                <input type="time" name="start-time" id="start-time" />
+              </div>
+
+              <div class="form-group">
+                <label for="end-time">End time</label>
+                <input type="time" name="end-time" id="end-time" />
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description</label>
+                <div>
+                  <textarea
+                    type="text"
+                    id="description"
+                    name="description"
+                    placeholder="What is agenda of the meeting?"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="attendees"
+                  >EmailIDs of attendees, or team's short</label
+                >
+                <div>
+                  <input
+                    type="text"
+                    id="attendees"
+                    name="attendees"
+                    placeholder="john.doe@example.com, @anual-day, mark@example.com"
+                  />
+                </div>
+                <span class="info-message"
+                  >Separate emailids / team short names by commas - team short
+                  names always begin with @</span
+                >
+              </div>
+
+              <button type="submit">Add Meeting</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

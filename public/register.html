@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Meeting, Meetings App , Calendar, Teams">
+    <meta name="author" content="Rehan Pathan">
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/utils.css" />
+    <link rel="stylesheet" href="../css/LoginRegister.css" />
+    <title>Register</title>
+    <script defer src="../services/auth-reg.js"></script>
+    <script defer src="../js/register.js"></script>
+    <script defer src="../services/validation.js"></script>
+  </head>
+  <body>
+    <h1 class="align-center">Registration Form</h1>
+    <form
+          class="container"
+          id="register-form"
+          action="https://mymeetingsapp.herokuapp.com/api/auth/register"
+          method="post"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <div>
+              <input type="text" id="name" name="name" placeholder="Name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div>
+              <input type="text" id="email" name="email" placeholder="Email" />
+            </div>
+            <div class="message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="message"></div>
+          </div>
+
+          
+            <label for="confirm-password">Confirm Password</label>
+            <div>
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <div class="message"></div>
+          </div>
+            <button type="submit">Register</button>
+            <div class="hint">
+              <p>Already have an account? <a href="login.html">Login!</a></p>
+            </div>
+        </form>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Meeting, Meetings App , Calendar, Teams">
+    <meta name="author" content="Rehan Pathan">
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/utils.css" />
+    <link rel="stylesheet" href="../css/LoginRegister.css" />
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h1 class="align-center">Login Form</h1>
+    <form action="https://mymeetingsapp.herokuapp.com/api/auth/login" id="login-form" method="post">
+      <div class="container">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          name="email"
+          required
+        />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+          name="password"
+          required
+        />
+        <div class="btn">
+          <button type="submit">Login</button>
+        </div>
+        <div class="hint">
+          <p>Don't have an account? <a href="register.html">Sign Up!</a></p>
+        </div>
+      </div>
+    </form>
+    <script src="../services/auth-login.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../services/validation.js"></script>
+  </body>
+</html>

@@ -4,102 +4,101 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="external css/normalize.css" />
-    <link rel="stylesheet" href="css/utils.css" />
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/pages/meeting.css" />
-    <link rel="stylesheet" href="css/pages/teams.css" />
-
-    <script src="js/check-login.js"></script>
-
-    <script defer src="js/nav-toggle.js"></script>
-    <script defer src="js/services/auth.js"></script>
-    <script defer src="js/services/meetings.js"></script>
-    <script defer src="js/pages/add-team-page.js"></script>
-    <script defer src="js/pages/teams.js"></script>
-    <!-- <script defer src="js/pages/plus-one-team.js"></script> -->
-
-
+    <meta name="description" content="View your Teams here" />
     <title>Teams</title>
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/utils.css" />
+    <link rel="stylesheet" href="../css/apps.js" />
+    <link rel="stylesheet" href="../css/nav-menu.css" />
+    <link rel="stylesheet" href="../css/teams.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script src="../services/check-login.js"></script>
+
+    <script defer src="../js/nav-menu.js"></script>
+    <script defer src="../services/teams.js"></script>
+    <script defer src="../js/show-teams.js"></script>
+    <script defer src="../js/add-team.js"></script>
+    <script defer src="../services/get-id.js"></script>
   </head>
   <body>
     <header>
-      <div class="my-meetings d-lg-none">
-        <span>my meetings</span>
-        <a class="menu-toggler icon">
+      <div class="menu d-lg-none">
+        <span>My Meetings</span>
+        <a class="menu-toggler">
           <i class="fa fa-bars"></i>
         </a>
       </div>
-      <nav id="nav-bar" class="navbar d-sm-none">
-        <ul class="nav-left">
-          <li>
-            <a href="index.html">Calandar</a>
-          </li>
-          <li>
-            <a href="add-meeting.html">Meetings</a>
-          </li>
+      <nav class="navbar d-sm-none">
+        <ul class="left-nav list-unstyle">
+          <li><a href="calendar.html" class="link-unstyle">Calendar</a></li>
+          <li><a href="meetings.html" class="link-unstyle">Meetings</a></li>
           <li class="active">
-            <a href="teams.html">Teams</a>
+            <a href="teams.html" class="link-unstyle">Teams</a>
           </li>
         </ul>
-        <ul class="nav-right">
-          <li id="hello">
-            Hello <span id="display-uname">jane.doe@example.com</span>
-          </li>
-          <li id="logout">
-            <a href="login-and-registration-page/login.html"> Logout</a>
+        <ul class="right-nav list-unstyle">
+          <li>Hello<a href="#" class="link-unstyle" id="user"></a></li>
+          <li>
+            <a href="login.html" class="link-unstyle" id="btn-logout">Logout</a>
           </li>
         </ul>
       </nav>
     </header>
-
-    <h1>View and Add Team </h1>
-
     <main>
-  <div class="parent-team">
-        <!---        -->
-        <div class="team-list" >
-      <div  id="form-box" class="add-team-box boxes">
-        <!-- <span class="plus"> + </span>  -->
-       <form id="add-team" action="https://mymeetingsapp.herokuapp.com/api/teams" method="post">
-         <div class="form-group">
-           <label for="team-name">Team Name</label>
-           <input placeholder="Team Name" id="team-name" type="text" />
-         </div>
-         <div class="form-group">
-           <label for="team-short-name">Short Team Name</label>
-           <input
-             placeholder="Short Team Name"
-             id="team-short-name"
-             type="text"
-           />
-         </div>
-         <div class="form-group">
-           <label for="team-description">Team Description</label>
-           <input
-             placeholder="Team description"
-             id="team-description"
-             type="text"
-           />
-         </div>   
-         <div class="form-group form-group-adduser">
-           <div><label for="email">Attendees</label></div>
-           <select class="w-70" id="email-dropdown" name="email">
-            </select>
-            <button class="">Add</button>
-            <!-- <button type="submit" >Add User</button> -->
-         </div>
-         <button class="add-meeting-btn" type="submit">Add Teams</button>
-       </form>
-   </div>    
-      
-      
-   </div>
+      <h1>Teams</h1>
+      <hr />
+      <div>View and edit teams you are part of</div>
+      <div class="card-collection">
+        <form
+          method="post"
+          action="https://mymeetingsapp.herokuapp.com/api/teams"
+          id="add-team"
+          class="team-form hide card"
+        >
+          <div>
+            <label for="team-name"></label>
+            <input
+              type="text"
+              name="team-name"
+              id="team-name"
+              placeholder="team name"
+              required
+            />
+          </div>
+          <div class="team-short-name add-team-contents">
+            <label for="team-short-name"></label>
+            <input
+              type="text"
+              name="team-short-name"
+              id="team-short-name"
+              placeholder="team short name"
+              required
+            />
+          </div>
+          <div class="team-description add-team-contents">
+            <textarea
+              name="team-description"
+              id="team-description"
+              placeholder="Provide a description for the team"
+            ></textarea>
+          </div>
+          <div class="members"></div>
+          <button type="submit" class="add-btn">Add Team</button>
+        </form>
 
-  </div>
-
-
-  </main>
+        <div class="add-team card">
+          <button class="plus-btn" type="button">
+            <a class="add-team-toggler">
+              <i class="fa fa-plus"></i>
+            </a>
+          </button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
