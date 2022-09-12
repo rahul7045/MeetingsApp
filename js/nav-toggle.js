@@ -12,5 +12,5 @@ nav.classList.toggle( 'd-sm-none' );
 logoutBtn.addEventListener( 'click', function() {
     logout();
 
-    window.location = '../login-and-registration-page/login.html';
+    window.location = './login-and-registration-page/login.html';
 });

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teams</title>
+        <link rel="stylesheet" href="CSS/externel/css/normalize.css">
+        <link rel="stylesheet" href="CSS/app.css">
+        <link rel="stylesheet" href="CSS/navbar.css">
+        <link rel="stylesheet" href="CSS/teams.css">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+
+        <script src="JS/pages/check-login.js"></script>
+        <script defer src="JS/services/auth.js"></script>
+        <script defer src="JS/services/add-team.js"></script>
+        <script defer src="JS/pages/add-team-page.js"></script>
+        <script defer src="JS/pages/view-team-page.js"></script>
+        <script defer src="JS/pages/teams-plus-form.js"></script>
+        <script defer src="JS/pages/nav.js"></script>
+        
+    </head>
+    <body>
+        <div class="my-meetings hide-my-meetings">
+            <span><strong>MyMeetings</strong></span>
+            <i class="fa fa-bars">
+                <ul class="mobile-view list-unstyled left-sidebar">
+                    <li class="list "><a href="calender.html" >Calender</a></li>
+                    <li class="list"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                    <li class="list active"><a href="teams.html">Teams</a></li>
+                    <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                    <li class="list"><button class="logout">Logout</button></li>
+                </ul>
+            </i>  
+        </div>
+        <nav class="navbar">
+            <div class="left-bar">
+                <ul class="left-list list-unstyled d-flex left-sidebar">
+                    <li class="list "><a href="calender.html" >Calender</a></li>
+                    <li class="list "><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                    <li class="list active"><a href="teams.html">Teams</a></li>
+                </ul>
+            </div>
+            <div class="right-bar">
+                <ul class="right-list list-unstyled d-flex left-sidebar">
+                    <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                    <li class="list"><button class="logout">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="container">
+            <h1>Teams</h1>
+            <hr />
+            <div class="teams-info">
+                View and edits teams you are part of
+            </div>
+            <div class="parent-team">
+                <div class="team-list">
+                    <div class="team-plus">
+                        <span class="plus">+</span>
+                    </div>
+                    <div class="add-meeting-form div-hide">
+                        <form action="https://mymeetingsapp.herokuapp.com/api/teams" method="post" id="add-team-form">
+                            <div class="team-name">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    placeholder="Team name"
+                                    required
+                                />
+                            </div>
+                            <div class="team-short-name">
+                                <input
+                                    type="text"
+                                    name="shortName"
+                                    id="shortname"
+                                    placeholder="Team short name"
+                                    required
+                                />
+                            </div>
+                            <div class="team-description">
+                                <textarea 
+                                    name="description"
+                                    id="description"
+                                    placeholder="Provide a description for the team"
+                                    required
+                                ></textarea>
+                            </div>
+                            <hr />
+                            <p class="team-examp"><strong>Members</strong> : john@example.com, jane@example.com </p>
+                            <div class="team-dropdown select-form">
+                                <select class="select-member">
+                                    <option value="">Select Member</option>
+                                </select>
+                                <button class="team-add-btn">Add</button>
+                            </div>
+                            <button class="add-meeting-btn">Add Team</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

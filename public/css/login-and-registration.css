@@ -1,0 +1,66 @@
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: lightblue;
+}
+
+input:not([type=button]) {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 2px solid green;
+  box-sizing: border-box;
+}
+
+label, input {
+  text-align: center;
+}
+
+label, .btn {
+  margin: 10px 10%;
+}
+
+/* 
+.btn{
+     margin: 10px 35%; 
+} */
+button {
+  background-color: #4CAF50;
+  width: 100%;
+  display: block;
+  border-radius: 5px;
+  color: black;
+  padding: 15px;
+  margin: 10px 0;
+  margin-right: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.signin {
+  background-color: lightblue;
+  text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+  input:not([type=button]) {
+    width: 80%;
+    margin: 10px 10%;
+    padding: 12px 20px;
+    display: block;
+    border: 2px solid green;
+    box-sizing: border-box;
+  }
+  .container {
+    max-width: 50%;
+  }
+  button {
+    width: 25%;
+    display: inline-block;
+    margin: 10px 30%;
+  }
+}
+
+/*# sourceMappingURL=login-and-registration.css.map */
