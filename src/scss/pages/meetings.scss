@@ -1,3 +1,8 @@
+@use '../common';
+@use '../component/index';
+@use './tab.scss';
+@use './form-add.scss';
+
 main {
   width: 90%;
   margin: 0 auto;

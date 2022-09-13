@@ -1,9 +1,17 @@
-import Login from './pages/login';
-import Home from './pages/home';
-import WorkshopsList from './pages/workshops-list';
-import AddWorkshop from './pages/add-workshop';
+import {Login} from './pages/login';
+import {Register} from './pages/register';
+import {Calender} from './pages/calendar';
+import {displayFilter} from './pages/display-filter-meetings';
+import {Meeting} from './pages/meeting';
+import {Teams} from './pages/show-teams'
 
-// interface for a function that can be called with new
+//import {addTeam} from './pages/add-team';
+//import {Meeting} from './pages/meeting';
+
+
+
+
+
 interface Constructable<T> {
     new( ...args: any ) : T;
 }
@@ -11,29 +19,25 @@ interface Constructable<T> {
 interface Routes<T> {
     [key: string]: {
         template: string,
-        Controller: Constructable<any> | null
+        Controller: Constructable<T> | null
     }
 }
 
 /**
  * Setup routes
  */
-const routes : Routes = {
+const routes : Routes<any>  = {
     '/login.html': {
         template: 'login',
         Controller: Login
     },
-    '/index.html': {
+    '/calender.html': {
         template: 'home',
-        Controller: Home
+        Controller: Calender
     },
-    '/workshops-list.html': {
-        template: 'workshops-list',
-        Controller: WorkshopsList
-    },
-    '/add-workshop.html': {
-        template: 'add-workshop',
-        Controller: AddWorkshop
+    '/add-meeting.html': {
+        template: 'meeting',
+        Controller: Meeting
     },
     '*': {
         template: 'page-not-found',
@@ -41,11 +45,7 @@ const routes : Routes = {
     }
 };
 
-/**
- * 1. Prevent loading of new page when a link is clicked
- * 2. Change the URL in the address bar (using history.pushState( '', '', newUrl ))
- * 3. Change the content of the page according to the new URL (read the right template and set it within the #root). Execute the JS required page JS.
- */
+
 const setupLinks = () => {
     // 1. Prevent loading of new page when a link is clicked
     const links = document.querySelectorAll( 'a' );
@@ -87,6 +87,7 @@ const loadPage = ( pathname : string ) => {
         setupLinks();
     }
 }
+loadPage(location.pathname);
 
 // handle popstate event (fired when back/forward button is clicked)
 window.addEventListener( 'popstate', function() {

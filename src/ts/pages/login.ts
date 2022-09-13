@@ -1,3 +1,5 @@
+import '../../scss/pages/LoginRegister.scss';
+
 import { loginUser } from '../services/auth-login';
 
 class Login {
@@ -17,7 +19,8 @@ class Login {
       loginUser(creds)
         .then(function (loginResponse) {
           console.log(loginResponse);
-          window.location.href = "../screens/calendar.html";
+          window.location.assign("./calender.html");
+         //location.reload();
         })
         
         .catch(function (error) {

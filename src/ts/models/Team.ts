@@ -1,13 +1,11 @@
-interface Team{
-    name : string ,
-    shortName : string ,
-    description : string ,
-    members : [
-        {
-            userId : number,
-            email : string
-        }
-    ]
+import Users from "./Users";
+
+interface ITeams {
+  _id?: string;
+  name: string;
+  shortName: String;
+  description: String;
+  members: string[] | Users[];
 }
 
-export {Team};
+export default ITeams;

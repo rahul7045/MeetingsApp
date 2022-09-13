@@ -1,5 +1,6 @@
-import {Team} from '../models/Team'
-const getTeams = function () {
+import ITeam from '../models/Team';
+
+  const getTeams = function () {
     return fetch(`https://mymeetingsapp.herokuapp.com/api/teams`, {
       method: "GET",
       headers: {
@@ -13,7 +14,7 @@ const getTeams = function () {
       return response.json();
     });
   };
-  function addTeam(team : Team) {
+  function addTeamServices(team : ITeam) {
     return fetch(`https://mymeetingsapp.herokuapp.com/api/teams`, {
       method: "POST",
       body: JSON.stringify(team),
@@ -49,7 +50,7 @@ const getTeams = function () {
       return response.json();
     });
   }
-  function addMember(teamID:number, userID:number, memberList : HTMLElement) {
+  function addMember(teamID:string | undefined, userID:string, memberList : HTMLElement) {
     return fetch(
       `https://mymeetingsapp.herokuapp.com/api/teams/${teamID}?action=add_member&email=${userID}`,
       {
@@ -62,14 +63,13 @@ const getTeams = function () {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      let membersArray : string[] | null = null ;
-      const memberNode = document.createTextNode(`,${userID}`)  
-      memberList.appendChild(memberNode);
-      membersArray.append(memberList) ;
-    
-      console.log(membersArray);
-      return response.json();
+      const memberNode = document.createTextNode(`,${userID}`);
+    memberList.appendChild(memberNode);
+    let membersArray: string[] = [];
+    membersArray.push(userID);
+    console.log(membersArray);
+    return response.json();
     });
   }
 
-  export {getTeams , addTeam , excuseYourself , addMember}
+  export {getTeams , addTeamServices , excuseYourself , addMember}

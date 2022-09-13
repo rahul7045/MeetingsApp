@@ -1,3 +1,5 @@
+import '../../scss/pages/calendar.scss'
+
 import { Meeting } from "../models/Meetings";
 import { Meetings } from "../services/get-calendar";
 class Calender {

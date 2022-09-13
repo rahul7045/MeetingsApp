@@ -1,6 +1,6 @@
+import  ITeam  from '../models/Team';
 import {getUserID} from '../services/get-id';
-import {getTeams , addTeam , excuseYourself , addMember} from '../services/teams'
-import {Team} from '../models/Team';
+import  {getTeams , addTeamServices , excuseYourself , addMember} from '../services/teams'
 
 
 
@@ -12,7 +12,7 @@ function appendMembers(member : string) {
 }
 
 class addTeam {
-  const addTeamsList = document.querySelector(".members") as HTMLElement;
+   addTeamsList = document.querySelector(".members") as HTMLElement;
    allUsers: any[] = [];
    showUsersDropdown =() => {
     let allUsersOptionsStr = "";
@@ -44,12 +44,13 @@ class addTeam {
         console.log(response);
         return response;
       })
-      .then( (users) {
+      .then( (users) =>{
         this.allUsers = users;
       });
   }
   
- addNewTeam(users : string) {
+ addNewTeam(user : string) {
+  
   const addTeamForm = document.querySelector("#add-team") as HTMLElement;
   // var users; //;
   addTeamForm.addEventListener("submit", function (event) {
@@ -65,11 +66,11 @@ class addTeam {
       members: membersArray,
     };
     if (true) {
-       addTeam(team )
-      .then( (addedTeam) {
+       addTeamServices(team )
+      .then( (addedTeam) => {
         console.log(addedTeam._id);
 
-        let newTeamMembers = addedTeam.members.map(function (newMember) {
+        let newTeamMembers = addedTeam.members.map(function (newMember: { email:string; }) {
           return newMember.email;
         });
 
@@ -128,6 +129,8 @@ class addTeam {
     });
     this.addNewTeam(allUsersOptionsStr);
   };
+
+
 };
 
 
@@ -135,3 +138,7 @@ class addTeam {
 
 //console.log(membersArray);
 export {addTeam}
+
+
+
+//no use
