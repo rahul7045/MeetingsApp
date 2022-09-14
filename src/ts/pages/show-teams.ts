@@ -1,10 +1,10 @@
 import '../../scss/pages/teams.scss';
-
 import {getTeams , addTeamServices , excuseYourself , addMember} from "../services/teams";
 import { getUserID } from "../services/get-id";
 import Users from '../models/Users'
 let membersArray: Users[] = [];
-import ITeam from '../models/Team' ;
+import ITeams from '../models/Team' ;
+import init from './nav-menu';
 
 function appendMembers(member: Users) {
   membersArray.push(member);
@@ -16,9 +16,9 @@ class Teams {
   addTeamsList = document.querySelector(".members");
   allUsers: Users[] = [];
 
-  showTeams = (teams: ITeam[]) => {
-    let teamsList = document.querySelector(".card-collection");
-    let cards = (teamsList as HTMLElement).innerHTML;
+  showTeams = (teams: ITeams[]) => {
+    const teamsList = document.querySelector(".card-collection");
+    const cards = (teamsList as HTMLElement).innerHTML;
 
     let teamsListStr = "";
     let allUsersOptionsStr = "";
@@ -26,12 +26,12 @@ class Teams {
       allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
     });
 
-    teams.forEach((team) => {
-      let teamMembers = team.members.map( (member ) => {
+    teams.forEach((team: ITeams, idx) => {
+      const teamMembers = team.members.map(function (member) {
         console.log(team);
-        return (member as Users).email;
+        return member.email;
       });
-      let teamID = team._id;
+      const teamID = team._id;
       teamsListStr += `
               <div class="card">
                   <div class="team-name">${team.name}</div>
@@ -39,7 +39,7 @@ class Teams {
                   <div>${team.description}</div>
                   <div> 
                     <button type="button" 
-                             
+                             id="${idx}"
                             class="excuse-yourself-btn"
                         >Excuse yourself
                     </button>
@@ -62,35 +62,47 @@ class Teams {
     });
 
     (teamsList as HTMLDivElement).innerHTML = teamsListStr + cards;
-    // excuse yourself event listener
-    // const excuseYourselfBtn = document.querySelector("excuse-yourself-btn");
-    // (excuseYourselfBtn as HTMLButtonElement).addEventListener("click", () => {
-    //   excuseYourself(
-    //     team._id,
-    //     (excuseYourselfBtn as HTMLButtonElement).closest(
-    //       ".card"
-    //     ) as HTMLDivElement
-    //   );
-    // });
 
-    const memberList = document.querySelector(".member-list");
-    console.log(memberList);
-    const selectInput = document.querySelector(".select-input");
-    console.log(selectInput);
+    teams.forEach(function (team, idx) {
+      const excuseYourselfBtn =
+        document.querySelectorAll(`.excuse-yourself-btn`);
+      (excuseYourselfBtn[idx] as HTMLButtonElement).addEventListener(
+        "click",
+        () => {
+          let teamid :string=team._id!; 
+          excuseYourself(teamid).then(function () {
+            (
+              (excuseYourselfBtn[idx] as HTMLButtonElement).closest(
+                ".card"
+              ) as HTMLDivElement
+            ).remove();
+          });
+        }
+      );
 
-    const addMemberBtn = document.querySelector(".add-btn");
-    console.log(addMemberBtn as HTMLElement);
-    (addMemberBtn as HTMLElement).addEventListener("click", () => {
-      console.log((selectInput as HTMLInputElement).value);
-      const memberToBeAdded: Users | undefined = this.allUsers.find(() => {
-        return (selectInput as HTMLInputElement).value;
+      const addMemberBtn = document.querySelectorAll(".add-btn");
+      const selectInput = document.querySelectorAll(".select-input");
+      const memberList = (
+        (selectInput[idx] as HTMLInputElement).closest("div") as HTMLDivElement
+      ).previousElementSibling;
+      let userID: string;
+      (selectInput[idx] as HTMLInputElement).addEventListener(
+        "input",
+        function () {
+          userID = (selectInput[idx] as HTMLInputElement).value;
+        }
+      );
+
+      (addMemberBtn[idx] as HTMLButtonElement).addEventListener("click", () => {
+        addMember(team._id, userID).then(function () {
+          const memberNode = document.createTextNode(`,${userID}`);
+          (memberList as HTMLElement).appendChild(memberNode);
+        });
       });
-
-      if (memberToBeAdded) {
-        appendMembers(memberToBeAdded);
-      }
     });
 
+
+    
     this.addNewTeam();
     const addTeamBtn = document.querySelector(".add-team");
     const addTeamForm = document.querySelector(".team-form");
@@ -134,92 +146,146 @@ class Teams {
       });
   };
 
-   addNewTeam = () => {
-     const addTeamForm = document.querySelector("#add-team");
-     // var users; //;
-     (addTeamForm as HTMLElement).addEventListener("submit", function (event) {
-       event.preventDefault();
+  addNewTeam = () => {
+    const addTeamForm = document.querySelector("#add-team");
+    // var users; //;
+    (addTeamForm as HTMLElement).addEventListener("submit", (event) => {
+      event.preventDefault();
 
-       let selectInput = document.getElementById("add-member");
-       // console.log(selectInput.innerHTML);
+      const selectInput = document.getElementById("add-member");
+      // console.log(selectInput.innerHTML);
 
-       let team: ITeam = {
-         name: (
-           document.getElementById("team-name") as HTMLInputElement
-         ).value.trim(),
-         shortName: (
-           document.getElementById("team-short-name") as HTMLInputElement
-         ).value.trim(),
-         description: (
-           document.getElementById("team-description") as HTMLInputElement
-         ).value.trim(),
+      const team: ITeams = {
+        name: (
+          document.getElementById("team-name") as HTMLInputElement
+        ).value.trim(),
+        shortName: (
+          document.getElementById("team-short-name") as HTMLInputElement
+        ).value.trim(),
+        description: (
+          document.getElementById("team-description") as HTMLInputElement
+        ).value.trim(),
         members: membersArray,
-       };
-       if (true) {
-         addTeamServices(team).then(function (addedTeam) {
-           console.log(addedTeam._id);
+      };
 
-          let newTeamMembers = addedTeam.members.map(function (
+      let allUsersOptionsStr = "";
+      this.allUsers.forEach(function (user) {
+        allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
+      });
+      function isvalid() {
+        return true;
+      }
+      if (isvalid()) {
+        addTeamServices(team).then(function (addedTeam) {
+          console.log(addedTeam._id);
+
+          const newTeamMembers = addedTeam.members.map(function (
             newMember: Users
           ) {
             return newMember.email;
-           });
+          });
 
-           // let newAllMembersOption = "";
-           // allUsers.forEach(function (user) {
-           //   newAllMembersOption += `<option value="${user.email}">${user.email}</option> `;
-           // });
+          // let newAllMembersOption = "";
+          // allUsers.forEach(function (user) {
+          //   newAllMembersOption += `<option value="${user.email}">${user.email}</option> `;
+          // });
 
-           let addedNewTeam = `
-        
-               <div class="team-name">${addedTeam.name}</div>
-               <div class="team-short-name">@${addedTeam.shortName}</div>
-               <div>${addedTeam.description}</div>
-               <div> 
-                 <button type="submit" 
-                         onclick="excuseYourself('${
-                           addedTeam._id
-                         }',this.closest('.card'))" 
-                         class="excuse-yourself-btn"
-                     >Excuse yourself
-                 </button>
-               </div>
-               <div class="aaron"><span style="font-weight:bold">Members:</span>${newTeamMembers}</div>
-               <div>
+          const addedNewTeam = `
+        <div id="new-team-card">
+              <div class="team-name">${addedTeam.name}</div>
+              <div class="team-short-name">@${addedTeam.shortName}</div>
+              <div>${addedTeam.description}</div>
+              <div> 
+                <button type="button"  
+                        class="excuse-yourself-btn-new"
+                    >Excuse yourself
+                </button>
+              </div>
+              <div class="aaron"><span style="font-weight:bold">Members:</span>${newTeamMembers}</div>
+              <div>
                 <span>
-                   <label for="add-member"></label>
-                   <select style="width:40%" id="add-member" class= "select-input">${
-                     (selectInput as HTMLInputElement).innerHTML
-                   }</select>
+                  <label for="add-member"></label>
+                  <select style="width:40%" id="add-member" class= "select-input-new">${allUsersOptionsStr}</select>
                 </span>
-                <button type="submit" 
-                         class="add-member-btn" 
+                <button type="button" 
+                        class="add-member-btn-new" 
                        
-                     >add
-                 </button>
-               </div>
-             </div>
+                    >add
+                </button>
+              </div>
+            </div>
+            </div>
          
-           `;
+          `;
 
-           const parentNode = document.querySelector(".card-collection");
-           const childNode = document.createElement("div");
-           childNode.innerHTML = addedNewTeam;
-           (parentNode as HTMLDivElement).insertBefore(
-             childNode,
-             document.getElementById("add-team")
-           );
-           childNode.classList.add("card");
-           (document.getElementById("add-team") as HTMLDivElement).classList.add(
-             "hide"
-           );
-         });
-       }
-     });
-   };
+          const parentNode = document.querySelector(".card-collection");
+          const childNode = document.createElement("div");
+          childNode.innerHTML = addedNewTeam;
+
+          (parentNode as HTMLDivElement).insertBefore(
+            childNode,
+            document.getElementById("add-team")
+          );
+          childNode.classList.add("card");
+          (document.getElementById("add-team") as HTMLDivElement).classList.add(
+            "hide"
+          );
+          const excuseYourselfBtn = document.querySelector(
+            ".excuse-yourself-btn-new"
+          );
+          const newTeam = document.getElementById("new-team-card");
+          (excuseYourselfBtn as HTMLButtonElement).addEventListener(
+            "click",
+            () => {
+              console.log(addedTeam._id);
+              excuseYourself(addedTeam._id).then(function () {
+                // (
+                //   (excuseYourselfBtn as HTMLButtonElement).closest(
+                //     ".new-team-card"
+                //   ) as HTMLDivElement
+                // ).remove();
+                console.log(
+                  (excuseYourselfBtn as HTMLButtonElement).closest(
+                    ".card"
+                  ) as HTMLDivElement
+                );
+                (newTeam as HTMLDivElement).remove();
+                (
+                  (excuseYourselfBtn as HTMLButtonElement).closest(
+                    ".card"
+                  ) as HTMLDivElement
+                ).remove();
+              });
+            }
+          );
+
+          const addMemberBtn = document.querySelector(".add-btn-new");
+          const selectInput = document.querySelector(".select-input-new");
+          const memberList = (
+            (selectInput as HTMLInputElement).closest("div") as HTMLDivElement
+          ).previousElementSibling;
+          let userID: string;
+          (selectInput as HTMLInputElement).addEventListener(
+            "input",
+            function () {
+              userID = (selectInput as HTMLInputElement).value;
+            }
+          );
+
+          (addMemberBtn as HTMLButtonElement).addEventListener("click", () => {
+            addMember(addedTeam._id, userID).then(function () {
+              const memberNode = document.createTextNode(`,${userID}`);
+              (memberList as HTMLElement).appendChild(memberNode);
+            });
+          });
+        });
+      }
+    });
+  };
 
   load = () => {
-    let user = document.getElementById("user");
+    init();
+    const user = document.getElementById("user");
     (user as HTMLElement).textContent = ` ${localStorage.getItem("email")}`;
     let allUsersOptionsStr = "";
     this.getAllUsers()
@@ -240,13 +306,8 @@ class Teams {
       allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
     });
     this.addNewTeam();
-    initNav();
   };
 }
 
-export {Teams} ;
+export {Teams};
 console.log(membersArray);
-
-function initNav() {
-  throw new Error("Function not implemented.");
-}

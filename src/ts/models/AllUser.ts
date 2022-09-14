@@ -1,7 +1,6 @@
 interface AllUser{
-        email : string ,
-        id : number
-    }
+    email : string ,
+    id : number
+}
 
-    export {AllUser}
-
+export {AllUser}

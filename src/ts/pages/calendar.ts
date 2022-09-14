@@ -2,6 +2,7 @@ import '../../scss/pages/calendar.scss'
 
 import { Meeting } from "../models/Meetings";
 import { Meetings } from "../services/get-calendar";
+import init from './nav-menu'
 class Calender {
 
    getMeets(meetings : Meeting[]) {
@@ -59,6 +60,7 @@ class Calender {
   }
 
  load = () => {
+  init();
     var today = new Date();
 
     var date =
@@ -88,7 +90,6 @@ let selectDate : HTMLInputElement = document.getElementById("date-selected") as 
       this.GetMeetings(searchDate);
     });
   };
-  
 };
 
 var today;

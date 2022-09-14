@@ -1,3 +1,6 @@
+@use './meetings.scss';
+@use './form-add.scss';
+.meeting-page{
 .tab {
   overflow: hidden;
   margin-bottom: 1px solid #ccc;
@@ -46,4 +49,5 @@
 hr {
   margin-top: 0px;
   z-index: 0;
+}
 }

@@ -9,14 +9,17 @@ function register(user : Register) {
     },
   })
     .then(function (response) {
+      console.log(response);
       if (!response.ok) {
         
         throw new Error(response.statusText);
       }
+      //console.log("user added 1")
       return response.json();
     })
     .then(function (registerResponse) {
-      
+      //console.log("user added 2")
+       //alert("User Registered");
       return registerResponse; 
     });
 }

@@ -1,7 +1,4 @@
-@use '../common';
-@use '../component/index';
-
-
+.calender-page{
 * {
   margin: 0;
   padding: 0;
@@ -63,4 +60,5 @@ main {
   height: 1660px;
   background-color: rgba(128, 128, 128, 0);
   z-index: 1;
+}
 }

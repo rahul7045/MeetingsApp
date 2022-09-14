@@ -1,5 +1,4 @@
-@use '../common';
-
+.login-page{
 label , .btn {
     font-family: sans-serif;
     margin: 10px 10%;
@@ -23,7 +22,7 @@ button {
     max-width: 50%;
     margin: 0 auto;
     padding: 25px;
-    background-color: skyblue;
+    background-color: rgb(208, 226, 89);
 }
 
 input[type=text],
@@ -34,7 +33,7 @@ input[type=password],input[type=email] {
     display: block;
     border: 1px solid black;
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .hint{
@@ -47,7 +46,7 @@ input[type=password],input[type=email] {
 }
 
 
-@media (max-width: 700px) {
+@media only screen and (max-width: 700px) {
 
     input[type=text],
     input[type=password],input[type=email] {
@@ -76,4 +75,5 @@ input[type=password],input[type=email] {
         margin: 10px 0;
     }
 
+}
 }

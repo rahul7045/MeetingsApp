@@ -1,5 +1,5 @@
 const path = require( 'path' );
-//const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 module.exports = {
     mode: 'development',
     entry: './src/ts/index.ts',
@@ -28,12 +28,12 @@ module.exports = {
     resolve: {
         extensions: [ '.ts', '.js' ]
     },
-    // plugins: [
-    //     new HtmlWebpackPlugin({
-    //         filename: './index.html',
-    //         template: './public/index.html',
-    //         inject: true,
-    //         chunks: [ 'main' ]
-    //     })
-    // ]
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: './index.html',
+            template: './public/index.html',
+            inject: true,
+            chunks: [ 'main' ]
+        })
+    ]
 };

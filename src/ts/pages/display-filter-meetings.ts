@@ -1,9 +1,25 @@
 import  {addMeeting , getMeetings , filterMeetings , excuseYourself , addAttendee} from '../services/get-meetings'
 import {Meeting} from '../models/Meetings';
 import {getUserID} from '../services/get-id'
-import {AllUser} from '../models/AllUser'
+import {AllUser} from '../models/AllUser';
+import '../../scss/pages/tab.scss';
+import addMeetingValidation from '../services/add-meeting-validation';
+import Users from '../models/Users'
+let membersArray: Users[] = [];
+import opentab from './tab';
+//import  from '../services/teams'
+
+
+function appendMembers(member: Users) {
+  membersArray.push(member);
+  const memberNode = document.createTextNode(`,${member}`);
+  (document.querySelector(".member-list") as HTMLDivElement).append(memberNode);
+}
+
+
 class displayFilter {
-   allUsers:  AllUser[] =[];
+   allUsers:  Users[] =[];
+
    searchMeetingForm : HTMLFormElement | null = null;
 
 
@@ -15,7 +31,7 @@ class displayFilter {
     });
 
     let searchMeetingListStr = "";
-    meetings.forEach(function (meeting) {
+    meetings.forEach(function (meeting , idx) {
       let meetingAttendees = meeting.attendees.map(function (attendee) {
         return attendee.email;
       });
@@ -62,7 +78,11 @@ class displayFilter {
           </div>
           <div class="meeting-name">${meeting.name}</div>
           <div>
-            <button type="submit" onclick="excuseYourself('${meetingID}',this.closest('.card'))" class="excuse-yourself-btn">Excuse yourself</button>
+            <button type="submit" 
+            id = "${idx}"
+             class="excuse-yourself-btn">
+             Excuse yourself
+             </button>
           </div>
           <div><span style="font-weight:bold">Attendees:</span><span style="word-break: break-all;">${meetingAttendees}</span></div>
           <div>
@@ -81,9 +101,28 @@ class displayFilter {
          `;
     });
     searchMeetingList.innerHTML = searchMeetingListStr;
+
+    meetings.forEach(function(meeting , idx){
+      const excuseYourselfBtn =
+        document.querySelectorAll(`.excuse-yourself-btn`);
+      (excuseYourselfBtn[idx] as HTMLButtonElement).addEventListener(
+        "click",
+        () => {
+          let meetid :number = meeting._id!; 
+          excuseYourself(meetid).then(function () {
+            (
+              (excuseYourselfBtn[idx] as HTMLButtonElement).closest(
+                ".card"
+              ) as HTMLDivElement
+            ).remove();
+          });
+        }
+      );
+    })
   }
 
    showSearchMeetings =() => {
+    this.searchMeetingForm  = document.getElementById("search-meeting-form") as HTMLFormElement;
     (this.searchMeetingForm as HTMLElement).addEventListener("submit",  (event) => {
       let periodField = (document.getElementById("period") as HTMLInputElement).value;
       let searchEl = (document.getElementById("search") as HTMLInputElement).value;
@@ -112,9 +151,12 @@ class displayFilter {
   }
 
   load = () =>{
-    this.searchMeetingForm  = document.getElementById("search-meeting-form") as HTMLFormElement;
     this.getAllUsers();
     this.showSearchMeetings();
+
+    const e = new addMeetingValidation();
+    e.load()
+   
   };
 
 };

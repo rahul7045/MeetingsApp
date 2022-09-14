@@ -39,6 +39,14 @@ main {
   border: none;
 }
 
+.excuse-yourself-btn {
+  padding: 0.5em;
+  background-color: crimson;
+  color: white;
+  border: 1px solid crimson;
+  border-radius: 5px;
+}
+
 .team-name {
   font-size: 1.3em;
   font-weight: bold;
@@ -47,14 +55,6 @@ main {
 .team-short-name {
   font-size: 1em;
   font-weight: bold;
-}
-
-.excuse-yourself-btn {
-  padding: 0.5em;
-  background-color: crimson;
-  color: white;
-  border: 1px solid crimson;
-  border-radius: 5px;
 }
 
 @media (min-width: 640px) {
@@ -69,7 +69,7 @@ main {
   .card {
     margin: 10px 0px;
     margin: 10px;
-    width: 25%;
+    width: 30%;
   }
   .add-team {
     border: 1px solid #ddd;

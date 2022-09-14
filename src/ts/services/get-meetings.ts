@@ -67,7 +67,7 @@ function filterMeetings(period : string, search : string) {
 }
 
 // userID=localStorag
-function excuseYourself(meetingID : number, meetingCard : HTMLElement) {
+function excuseYourself(meetingID : number) {
   return fetch(
     `https://mymeetingsapp.herokuapp.com/api/meetings/${meetingID}?action=remove_attendee`,
     {
@@ -81,7 +81,7 @@ function excuseYourself(meetingID : number, meetingCard : HTMLElement) {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    meetingCard.remove();
+    //meetingCard.remove();
     return response.json();
   });
 }

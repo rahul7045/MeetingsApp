@@ -31,7 +31,7 @@ import ITeam from '../models/Team';
       return response.json();
     });
   }
-  function excuseYourself(teamID : number, teamCard : HTMLElement) {
+  function excuseYourself(teamID : string) {
     console.log(teamID);
     return fetch(
       `https://mymeetingsapp.herokuapp.com/api/teams/${teamID}?action=remove_member`,
@@ -46,11 +46,11 @@ import ITeam from '../models/Team';
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      teamCard.remove();
+      //teamCard.remove();
       return response.json();
     });
   }
-  function addMember(teamID:string | undefined, userID:string, memberList : HTMLElement) {
+  function addMember(teamID:string | undefined, userID:string) {
     return fetch(
       `https://mymeetingsapp.herokuapp.com/api/teams/${teamID}?action=add_member&email=${userID}`,
       {
@@ -63,11 +63,11 @@ import ITeam from '../models/Team';
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      const memberNode = document.createTextNode(`,${userID}`);
-    memberList.appendChild(memberNode);
-    let membersArray: string[] = [];
-    membersArray.push(userID);
-    console.log(membersArray);
+    //   const memberNode = document.createTextNode(`,${userID}`);
+    // memberList.appendChild(memberNode);
+    // let membersArray: string[] = [];
+    // membersArray.push(userID);
+    // console.log(membersArray);
     return response.json();
     });
   }

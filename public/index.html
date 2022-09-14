@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/utils.css" />
-    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/nav-menu.css" />
 
     <script defer src="dist/main.bundle.js"></script>
     <title>Document</title>
@@ -13,15 +13,16 @@
   <body>
     <div id="root"></div>
     <template id="home">
+      <div class="calender-page">
       <header>
 
         <div class="menu d-lg-none">
   
           <span>My Meetings</span>
   
-          <a class="menu-toggler">
+          <button class="menu-toggler">
             <i class="fa fa-bars"></i>
-          </a>
+          </button>
   
         </div>
   
@@ -160,6 +161,7 @@
           <div class="meet-cont"></div>
         </div>
       </main>
+    </div>
       <script>
         let selectLogout = document.getElementById("logout");
           selectLogout.addEventListener("click", function () {
@@ -169,6 +171,7 @@
     </template>
 
     <template id="login">
+      <div class="login-page">
       <h1 class="align-center">Login Form</h1>
       <form
         action="./calendar.html"
@@ -176,22 +179,30 @@
         method="post"
       >
         <div class="container">
+          <div class="form-group">
           <label for="email">Email</label>
           <input
             type="email"
-            id="email"
+            id="login-email"
             placeholder="Email"
             name="email"
-            required
+            
           />
+          <div class="message"></div>
+          </div>
+
+          <div class="form-group">
           <label for="password">Password</label>
           <input
             type="password"
-            id="password"
+            id="login-password"
             placeholder="Enter Password"
             name="password"
-            required
+          
           />
+          <div class="message"></div>
+          </div>
+
           <div class="btn">
             <button type="submit">Login</button>
           </div>
@@ -200,15 +211,17 @@
           </div>
         </div>
       </form>
+      </div>
     </template>
 
     <template id="meeting">
+      <div class="meeting-page">
       <header>
         <div class="menu d-lg-none">
           <span>My Meetings</span>
-          <a class="menu-toggler">
+          <button class="menu-toggler">
             <i class="fa fa-bars"></i>
-          </a>
+          </button>
         </div>
         <nav class="navbar d-sm-none">
           <ul class="left-nav list-unstyle">
@@ -233,11 +246,11 @@
           <button
             class="tablinks"
             id="default-open"
-            onclick="opentab(event, 'filter')"
+            
           >
             Filter / Search Meetings
           </button>
-          <button class="tablinks" onclick="opentab(event, 'add')">
+          <button class="tablinks" id="add-open">
             Add a Meeting
           </button>
         </div>
@@ -305,6 +318,7 @@
                   <div class="margin-bottom">
                     <input type="text" id="meeting-name" name="meeting-name" />
                   </div>
+                  <span class="message color-red"></span>
                 </div>
   
                 <div class="form-group">
@@ -316,17 +330,23 @@
                       name="date"
                       placeholder="dd/mm/yy"
                     />
+                    <span class="message color-red"></span>
+
                   </div>
                 </div>
   
                 <div class="form-group">
                   <label for="start-time">Start time</label>
                   <input type="time" name="start-time" id="start-time" />
+                  <span class="message color-red"></span>
+
                 </div>
   
                 <div class="form-group">
                   <label for="end-time">End time</label>
                   <input type="time" name="end-time" id="end-time" />
+                  <span class="message color-red"></span>
+
                 </div>
   
                 <div class="form-group">
@@ -339,6 +359,8 @@
                       placeholder="What is agenda of the meeting?"
                     ></textarea>
                   </div>
+                  <span class="message color-red"></span>
+
                 </div>
   
                 <div class="form-group">
@@ -353,6 +375,8 @@
                       placeholder="john.doe@example.com, @anual-day, mark@example.com"
                     />
                   </div>
+                  <span class="message color-red"></span>
+
                   <span class="info-message"
                     >Separate emailids / team short names by commas - team short
                     names always begin with @</span
@@ -365,15 +389,17 @@
           </div>
         </div>
       </main>
+      </div>
     </template>
 
     <template id="teams">
+      <div class="teams-page">
       <header>
         <div class="menu d-lg-none">
           <span>My Meetings</span>
-          <a class="menu-toggler">
+          <button class="menu-toggler">
             <i class="fa fa-bars"></i>
-          </a>
+          </button>
         </div>
         <nav class="navbar d-sm-none">
           <ul class="left-nav list-unstyle">
@@ -442,6 +468,61 @@
           </div>
         </div>
       </main>
+      </div>
+    </template>
+    <template id="register">
+      <div class="login-page">
+      <h1 class="align-center">Registration Form</h1>
+      <form
+            class="container"
+            id="register-form"
+            action="https://mymeetingsapp.herokuapp.com/api/auth/register"
+            method="post"
+          >
+            <div class="form-group">
+              <label for="name">Name</label>
+              <div>
+                <input type="text" id="name" name="name" placeholder="Name" />
+              </div>
+              <div class="message"></div>
+            </div>
+  
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div>
+                <input type="text" id="email" name="email" placeholder="Email" />
+              </div>
+              <div class="message"></div>
+            </div>
+  
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="message"></div>
+            </div>
+  
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <div>
+                <input
+                  type="password"
+                  id="confirm-password"
+                  name="confirm-password"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <div class="message"></div>
+            </div>
+            <button type="submit">Register</button>
+          </form>
+      </div>
     </template>
     
   </body>

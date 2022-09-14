@@ -1,4 +1,4 @@
-import Credentials from '../models/Credential';
+import Credentials from '../models/credential';
 
 
 function loginUser(credentials : Credentials) {

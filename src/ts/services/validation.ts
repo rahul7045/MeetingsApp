@@ -1,120 +1,174 @@
-const passwordEl = document.querySelector("#password") as HTMLInputElement;
-const confirmPasswordEl = document.querySelector("#confirm-password") as HTMLInputElement;
-const emailEl = document.querySelector("#email") as HTMLInputElement;
+import { register } from "./auth-reg";
+import "../../scss/pages/loginRegister.scss";
+class RegisterValidation {
+  passwordEl = document.querySelector("#password") as HTMLInputElement;
+  confirmPasswordEl = document.querySelector(
+    "#confirm-password"
+  ) as HTMLInputElement;
+  emailEl = document.querySelector("#email") as HTMLInputElement;
+  usernameEl = document.querySelector("#name") as HTMLInputElement;
+  form = document.querySelector("#register-form") as HTMLFormElement;
 
-function validatePassword() {
-  const password = passwordEl.value.trim();
-  const formGroupEl = passwordEl.closest(".form-group") as HTMLElement;
-  const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+  validateUsename = () => {
+    let username = this.usernameEl.value.trim();
+    const formGroupEl = this.usernameEl.closest(".form-group") as HTMLElement;
+    const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+    let error = "";
+    if (username.length < 4) {
+      error += "Username must be at least 4 characters long";
+    }
+    messageEl.textContent = error;
+    return error === "";
+  };
 
-  let error = "";
+  validatePassword = () => {
+    const password = this.passwordEl.value.trim();
+    const formGroupEl = this.passwordEl.closest(".form-group") as HTMLElement;
+    const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
 
-  // if( password.length === 0 ) {
-  if (!password) {
-    // empty string is considered as false
-    error += "<div>Password cannot be empty</div>";
-  } else {
-    // uppercase
-    const uppercasePat = /[A-Z]/;
-    if (!uppercasePat.test(password)) {
-      error += "<div>Password must have an uppercase character</div>";
+    let error = "";
+
+    if (!password) {
+      // empty string is considered as false
+      error += "<div>Password cannot be empty</div>";
+    } else {
+      // uppercase
+      const uppercasePat = /[A-Z]/;
+      if (!uppercasePat.test(password)) {
+        error += "<div>Password must have an uppercase character</div>";
+      }
+
+      // lowercase
+      const lowercasePat = /[a-z]/;
+      if (!lowercasePat.test(password)) {
+        error += "<div>Password must have a lowercase character</div>";
+      }
+
+      /* digit */
+      const digitPat = /[0-9]/;
+      if (!digitPat.test(password)) {
+        error += "<div>Password must have a digit</div>";
+      }
+
+      /* special characters */
+      const specialPat = /[!@#$%^&*()]/;
+      if (!specialPat.test(password)) {
+        error += "<div>Password must have a special character</div>";
+      }
     }
 
-    // lowercase
-    const lowercasePat = /[a-z]/;
-    if (!lowercasePat.test(password)) {
-      error += "<div>Password must have a lowercase character</div>";
+    messageEl.innerHTML = error;
+
+    return error === "";
+  };
+
+  validateConfirmPassword = () => {
+    const password = this.passwordEl.value.trim();
+    const confirmPassword = this.confirmPasswordEl.value.trim();
+    const formGroupEl = this.confirmPasswordEl.closest(
+      ".form-group"
+    ) as HTMLElement;
+    const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+
+    let error = "";
+
+    if (password !== confirmPassword) {
+      error += "Password and confirm password must match";
     }
 
-    /* digit */
-    const digitPat = /[0-9]/;
-    if (!digitPat.test(password)) {
-      error += "<div>Password must have a digit</div>";
+    messageEl.innerHTML = error;
+
+    return error === "";
+  };
+  validateEmail = () => {
+    // for event listeners, this -> element where event happens (usernameEl)
+    //console.log("this = ", this);
+
+    const email = this.emailEl.value.trim();
+    const formGroupEl = this.emailEl.closest(".form-group") as HTMLElement;
+    const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
+
+    let error = "";
+
+    if (!email) {
+      // empty string is considered as false
+      error += "<div>Email cannot be empty</div>";
     }
 
-    /* special characters */
-    const specialPat = /[!@#$%^&*()]/;
-    if (!specialPat.test(password)) {
-      error += "<div>Password must have a special character</div>";
-    }
-  }
+    messageEl.innerHTML = error;
 
-  messageEl.innerHTML = error;
+    return error === ""; // true for no error / false if input has errors
+  };
+  validate = () => {
+    let isValid = true;
 
-  return error === "";
+    isValid = this.validateUsename() && isValid;
+    isValid = this.validateEmail() && isValid;
+    isValid = this.validatePassword() && isValid;
+    isValid = this.validateConfirmPassword() && isValid;
+
+    return isValid;
+  };
+  addEventListeners = () => {
+    this.emailEl.addEventListener("blur", this.validateEmail);
+    this.emailEl.addEventListener("input", this.validateEmail);
+
+    this.passwordEl.addEventListener("blur", this.validatePassword);
+    this.passwordEl.addEventListener("input", this.validatePassword);
+
+    this.passwordEl.addEventListener("blur", this.validateConfirmPassword);
+    this.passwordEl.addEventListener("input", this.validateConfirmPassword);
+
+    this.confirmPasswordEl.addEventListener(
+      "blur",
+      this.validateConfirmPassword
+    );
+    this.confirmPasswordEl.addEventListener(
+      "input",
+      this.validateConfirmPassword
+    );
+
+    this.usernameEl.addEventListener("blur", this.validateUsename);
+    this.usernameEl.addEventListener("input", this.validateUsename);
+
+    // this.form.addEventListener("submit",(event)=> {
+    //   event.preventDefault();
+
+    //   const email = this.emailEl.value.trim();
+    //   const username=this.usernameEl.value.trim();
+    //   const password=this.passwordEl.value.trim();
+
+    //    const credentials = {
+    //      name: username,
+    //      email: email,
+    //      password: password,
+    //    };
+
+    //   // if (this.validate()) {
+    //   //   this.form.submit();
+    //   //   this.form.reset();
+    //   //   //validate();
+    //   // } else {
+    //   //   alert(Response);
+    //   // }
+    //   if (this.validate()) {
+    //     register(credentials)
+    //       .then(function (loginResponse) {
+    //         console.log(loginResponse);
+    //         window.alert("You have been successfully registered");
+    //         window.location.href = "./login.html";
+    //       })
+    //       .catch(function (error) {
+    //         alert('Account already exsists');
+    //        });
+    //    }
+    // });
+
+  };
+  load = () => {
+    this.form = document.querySelector("#register-form") as HTMLFormElement;
+    this.addEventListeners();
+  };
 }
 
-function validateConfirmPassword() {
-  const password = passwordEl.value.trim();
-  const confirmPassword = confirmPasswordEl.value.trim();
-  const formGroupEl = confirmPasswordEl.closest(".form-group") as HTMLElement;
-  const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
-
-  let error = "";
-
-  if (password !== confirmPassword) {
-    error += "Password and confirm password must match";
-  }
-
-  messageEl.innerHTML = error;
-
-  return error === "";
-}
-
-function validateEmail() {
-  // for event listeners, this -> element where event happens (usernameEl)
-  //console.log("this = ", this);
-
-  const email = emailEl.value.trim();
-  const formGroupEl = emailEl.closest(".form-group") as HTMLElement;
-  const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
-
-  let error = "";
-
-  if (!email) {
-    // empty string is considered as false
-    error += "<div>Email cannot be empty</div>";
-  }
-
-  messageEl.innerHTML = error;
-
-  return error === ""; // true for no error / false if input has errors
-}
-
-emailEl.addEventListener("blur", validateEmail);
-emailEl.addEventListener("input", validateEmail);
-
-passwordEl.addEventListener("blur", validatePassword);
-passwordEl.addEventListener("input", validatePassword);
-
-passwordEl.addEventListener("blur", validateConfirmPassword);
-passwordEl.addEventListener("input", validateConfirmPassword);
-
-confirmPasswordEl.addEventListener("blur", validateConfirmPassword);
-confirmPasswordEl.addEventListener("input", validateConfirmPassword);
-
-function validate() {
-  let isValid = true;
-
-  isValid = validateEmail() && isValid;
-  isValid = validatePassword() && isValid;
-  isValid = validateConfirmPassword() && isValid;
-
-  return isValid;
-}
-
-const form = document.querySelector("#register-form") as HTMLFormElement;
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  if (validate()) {
-    // if all fields are valid
-    this.submit();
-    this.reset();
-    // validate();
-  }
-  else{
-    alert(Response);
-  }
-});
+export { RegisterValidation };

@@ -21,7 +21,7 @@
 
 .form-group input {
   display: inline-block;
-  width: 95%;
+  width: 100%;
   font-size: 1em;
   padding: 0.3em;
   border: 1px solid transparent;
@@ -49,7 +49,7 @@ form button:hover {
 }
 
 .form-group textarea {
-  width: 95%;
+  width: 98%;
   border: 1px solid transparent;
   border-radius: 5px;
   margin-bottom: 1em;

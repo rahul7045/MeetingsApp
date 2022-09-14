@@ -1,6 +1,7 @@
 import '../../scss/pages/LoginRegister.scss';
 
 import { register } from '../services/auth-reg';
+
 class Register  {
   // let Register;
   //  Register = document.getElementById("register-form");

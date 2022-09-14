@@ -13,10 +13,9 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding: 1em;
   border: 1px solid black;
   border-radius: 5px;
-  word-break: break-all;
+  padding: 1em;
 }
 
 .excuse-yourself-btn {
@@ -38,12 +37,6 @@ main {
 
 .meeting-name {
   font-weight: 500;
-}
-
-#date,
-#start-time,
-#end-time {
-  width: fit-content;
 }
 
 /*# sourceMappingURL=meetings.css.map */

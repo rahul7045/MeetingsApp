@@ -3,7 +3,9 @@ import {Register} from './pages/register';
 import {Calender} from './pages/calendar';
 import {displayFilter} from './pages/display-filter-meetings';
 import {Meeting} from './pages/meeting';
-import {Teams} from './pages/show-teams'
+import {Teams} from './pages/show-teams';
+//import {RegisterValidation} from './services/validation';
+//import {LoginValidation} from './services/login-validation';
 
 //import {addTeam} from './pages/add-team';
 //import {Meeting} from './pages/meeting';
@@ -31,13 +33,21 @@ const routes : Routes<any>  = {
         template: 'login',
         Controller: Login
     },
-    '/calender.html': {
+    '/register.html': {
+        template: 'register',
+        Controller: Register
+    },
+    '/calendar.html': {
         template: 'home',
         Controller: Calender
     },
-    '/add-meeting.html': {
+    '/meetings.html': {
         template: 'meeting',
         Controller: Meeting
+    },
+    '/teams.html': {
+        template: 'teams',
+        Controller: Teams
     },
     '*': {
         template: 'page-not-found',

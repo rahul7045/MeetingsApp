@@ -19,7 +19,7 @@ class Login {
       loginUser(creds)
         .then(function (loginResponse) {
           console.log(loginResponse);
-          window.location.assign("./calender.html");
+          window.location.assign("./calendar.html");
          //location.reload();
         })
         

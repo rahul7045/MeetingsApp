@@ -13,4 +13,6 @@ function opentab(evt : Event, tab: string ) {
   (document.getElementById(tab) as HTMLElement).style.borderBottom = "block";
   (evt.currentTarget as HTMLElement).className  += " active";
 }
-(document.getElementById("default-open") as HTMLElement).click(); 
+//(document.getElementById("default-open") as HTMLElement).click(); 
+
+export default opentab;
