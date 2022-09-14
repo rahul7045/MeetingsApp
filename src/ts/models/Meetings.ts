@@ -7,7 +7,7 @@ interface Meeting {
         hours:number,
         minutes:number
     },
-    _id? : number,
+    _id? : string,
     name:string,
     description:string,
     date:string,

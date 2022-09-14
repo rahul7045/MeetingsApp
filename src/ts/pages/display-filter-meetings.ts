@@ -8,6 +8,7 @@ import Users from '../models/Users'
 let membersArray: Users[] = [];
 import opentab from './tab';
 //import  from '../services/teams'
+ 
 
 
 function appendMembers(member: Users) {
@@ -88,11 +89,12 @@ class displayFilter {
           <div>
             <span>
               <label for="add-attendee"></label>
-              <select style="width:40%" id="add-attendee" class="select-input"> <option style="color:#999;">Select member</option>${allUsersOptionsStr}</select>
+              <select style="width:40%" id="add-attendee" class="select-input"> 
+              <option style="color:#999;">Select member</option>${allUsersOptionsStr}</select>
             </span>
-            <button type="submit" 
+            <button type="button" 
                           class="add-btn" 
-                          onclick=" addAttendee('${meetingID}',this.closest('.card').querySelector('.select-input').value,this.closest('div').previousElementSibling
+                          
                           )"
                       >Add
                   </button>
@@ -108,7 +110,7 @@ class displayFilter {
       (excuseYourselfBtn[idx] as HTMLButtonElement).addEventListener(
         "click",
         () => {
-          let meetid :number = meeting._id!; 
+          let meetid :string = meeting._id!; 
           excuseYourself(meetid).then(function () {
             (
               (excuseYourselfBtn[idx] as HTMLButtonElement).closest(
@@ -118,6 +120,32 @@ class displayFilter {
           });
         }
       );
+
+      const addMemberBtn = document.querySelectorAll(".add-btn");
+      const selectInput = document.querySelectorAll(".select-input");
+      const memberList = (
+        (selectInput[idx] as HTMLInputElement).closest("div") as HTMLDivElement
+      ).previousElementSibling;
+      let userID:  string;
+
+      (selectInput[idx] as HTMLInputElement).addEventListener(
+        "input",
+        function () {
+          userID = (selectInput[idx] as HTMLInputElement).value;
+
+        }
+      );
+
+      (addMemberBtn[idx] as HTMLButtonElement).addEventListener("click", () => {
+        let meet1 : string = meeting._id!
+
+        addAttendee(meet1, userID).then(function () {
+          const memberNode = document.createTextNode(`,${userID}`);
+          (memberList as HTMLElement).appendChild(memberNode);
+        });
+      });
+
+
     })
   }
 
@@ -140,22 +168,28 @@ class displayFilter {
   }
 
    getAllUsers =() => {
-    getUserID()
+    return getUserID()
       .then(function (response) {
         console.log(response);
         return response;
       })
       .then( (users) => {
         this.allUsers = users;
+        console.log(this.allUsers)
       });
+    
   }
 
   load = () =>{
-    this.getAllUsers();
-    this.showSearchMeetings();
+    this.getAllUsers()
+    .then(()=>{
+      this.showSearchMeetings();
+      const e = new addMeetingValidation();
+       e.load()
+    }
+    )
 
-    const e = new addMeetingValidation();
-    e.load()
+    
    
   };
 

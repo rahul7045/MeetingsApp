@@ -48,6 +48,12 @@ class Meeting {
     ( document.getElementById( "default-open" ) as HTMLElement ).click();
 }
   load =() =>{
+
+    const x = new displayFilter();
+    x.load();
+    
+  
+
     init();
     let user : HTMLElement = document.getElementById("user") as HTMLElement;
     user.textContent = ` ${localStorage.getItem("email")}`;
@@ -74,6 +80,7 @@ class Meeting {
     
     this.defaultOpen();
   }
+
 }
 
 export {Meeting}

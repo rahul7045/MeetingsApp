@@ -11,9 +11,9 @@ class Login {
 
       const creds = {
 
-        email: (document.getElementById("email") as HTMLInputElement).value.trim(),
+        email: (document.getElementById("login-email") as HTMLInputElement).value.trim(),
 
-        password: (document.getElementById("password") as HTMLInputElement).value.trim(),
+        password: (document.getElementById("login-password") as HTMLInputElement).value.trim(),
 
       };
       loginUser(creds)

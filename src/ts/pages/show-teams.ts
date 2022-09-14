@@ -101,8 +101,6 @@ class Teams {
       });
     });
 
-
-    
     this.addNewTeam();
     const addTeamBtn = document.querySelector(".add-team");
     const addTeamForm = document.querySelector(".team-form");
@@ -110,7 +108,9 @@ class Teams {
       (addTeamForm as HTMLDivElement).classList.toggle("hide");
     });
   };
-  showUsersDropdown = () => {
+
+
+    showUsersDropdown = () => {
     let allUsersOptionsStr = "";
     let addTeamsListStr = "";
     this.allUsers.forEach(function (user) {
@@ -124,8 +124,8 @@ class Teams {
             <select style="width:40%" class= "select-input" id="member"> <option style="color:#999;">Select member</option>${allUsersOptionsStr}</select>
           </span>
           <button type="button" 
-                 
-                  onclick="appendMembers(this.closest('div').querySelector('.select-input').value)">add
+          class ="add-btn"
+                  >add
           </button>
         </div>
         `;
@@ -134,7 +134,6 @@ class Teams {
 
     return allUsersOptionsStr;
   };
-
   getAllUsers = () => {
     return getUserID()
       .then((response) => {
@@ -185,10 +184,7 @@ class Teams {
             return newMember.email;
           });
 
-          // let newAllMembersOption = "";
-          // allUsers.forEach(function (user) {
-          //   newAllMembersOption += `<option value="${user.email}">${user.email}</option> `;
-          // });
+          
 
           const addedNewTeam = `
         <div id="new-team-card">
@@ -306,6 +302,7 @@ class Teams {
       allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
     });
     this.addNewTeam();
+    
   };
 }
 

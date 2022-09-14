@@ -67,7 +67,7 @@ function filterMeetings(period : string, search : string) {
 }
 
 // userID=localStorag
-function excuseYourself(meetingID : number) {
+function excuseYourself(meetingID : string) {
   return fetch(
     `https://mymeetingsapp.herokuapp.com/api/meetings/${meetingID}?action=remove_attendee`,
     {
@@ -85,7 +85,7 @@ function excuseYourself(meetingID : number) {
     return response.json();
   });
 }
-function addAttendee(meetingID : number, userID : number, memberList : HTMLElement) {
+function addAttendee(meetingID : string, userID : string) {
   return fetch(
     `https://mymeetingsapp.herokuapp.com/api/meetings/${meetingID}?action=add_attendee&email=${userID}`,
     {
@@ -100,7 +100,7 @@ function addAttendee(meetingID : number, userID : number, memberList : HTMLEleme
       throw new Error(response.statusText);
     }
     const memberNode = document.createTextNode(`,${userID}`);
-    memberList.appendChild(memberNode);
+    //memberList.appendChild(memberNode);
     return response.json();
   });
 }
