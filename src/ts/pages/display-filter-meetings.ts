@@ -5,7 +5,7 @@ import {AllUser} from '../models/AllUser';
 import '../../scss/pages/tab.scss';
 import addMeetingValidation from '../services/add-meeting-validation';
 import Users from '../models/Users'
-let membersArray: Users[] = [];
+const membersArray: Users[] = [];
 import opentab from './tab';
 //import  from '../services/teams'
  
@@ -33,13 +33,13 @@ class displayFilter {
 
     let searchMeetingListStr = "";
     meetings.forEach(function (meeting , idx) {
-      let meetingAttendees = meeting.attendees.map(function (attendee) {
+      const meetingAttendees = meeting.attendees.map(function (attendee) {
         return attendee.email;
       });
 
-      let year =
+      const year =
         meeting.date[0] + meeting.date[1] + meeting.date[2] + meeting.date[3];
-      let day = meeting.date[8] + meeting.date[9];
+      const day = meeting.date[8] + meeting.date[9];
       let month   = meeting.date[5] + meeting.date[6];
 
       if (month == "01") {
@@ -68,7 +68,7 @@ class displayFilter {
         month = `December`;
       }
 
-      let meetingID = meeting._id;
+      const meetingID = meeting._id;
       searchMeetingListStr += `
         <div class="card">
           <div>
@@ -110,7 +110,7 @@ class displayFilter {
       (excuseYourselfBtn[idx] as HTMLButtonElement).addEventListener(
         "click",
         () => {
-          let meetid :string = meeting._id!; 
+          const meetid :string = meeting._id!; 
           excuseYourself(meetid).then(function () {
             (
               (excuseYourselfBtn[idx] as HTMLButtonElement).closest(
@@ -137,7 +137,7 @@ class displayFilter {
       );
 
       (addMemberBtn[idx] as HTMLButtonElement).addEventListener("click", () => {
-        let meet1 : string = meeting._id!
+        const meet1 : string = meeting._id!
 
         addAttendee(meet1, userID).then(function () {
           const memberNode = document.createTextNode(`,${userID}`);
@@ -152,8 +152,8 @@ class displayFilter {
    showSearchMeetings =() => {
     this.searchMeetingForm  = document.getElementById("search-meeting-form") as HTMLFormElement;
     (this.searchMeetingForm as HTMLElement).addEventListener("submit",  (event) => {
-      let periodField = (document.getElementById("period") as HTMLInputElement).value;
-      let searchEl = (document.getElementById("search") as HTMLInputElement).value;
+      const periodField = (document.getElementById("period") as HTMLInputElement).value;
+      const searchEl = (document.getElementById("search") as HTMLInputElement).value;
       event.preventDefault();
       const selectInput  = document.querySelector(".select-input") as HTMLElement;
 
@@ -193,6 +193,6 @@ class displayFilter {
    
   };
 
-};
+}
 
 export {displayFilter}

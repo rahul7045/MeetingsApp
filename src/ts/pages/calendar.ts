@@ -10,11 +10,11 @@ class Calender {
 
     let meetingsListStr = "";
     meetings.forEach(function (meeting) {
-      let meetingAttendees = meeting.attendees.map(function (attendee) {
+      const meetingAttendees = meeting.attendees.map(function (attendee) {
         return attendee.email;
       });
 
-      let duration =
+      const duration =
         parseInt(`${meeting.endTime.hours}`) * 60 +
         parseInt(`${meeting.endTime.minutes}`) -
         (parseInt(`${meeting.startTime.hours}`) * 60 +
@@ -22,7 +22,7 @@ class Calender {
         (parseInt(`${meeting.endTime.hours}`) -
           parseInt(`${meeting.startTime.hours}`)) *
           10;
-      let topHeight =
+      const topHeight =
         parseInt(`${meeting.startTime.hours}`) * 60 +
         parseInt(`${meeting.startTime.minutes}`) +
         parseInt(`${meeting.startTime.hours}`) * 10;
@@ -61,18 +61,18 @@ class Calender {
 
  load = () => {
   init();
-    var today = new Date();
+    const today = new Date();
 
-    var date =
+    let date =
       today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
       
-    var day = today.getDay();
+    const day = today.getDay();
 
-    let user : HTMLElement = document.getElementById("user") as HTMLElement;
+    const user : HTMLElement = document.getElementById("user") as HTMLElement;
     user.textContent = ` ${localStorage.getItem("email")}`;
 
-    let todaysDate : HTMLInputElement = document.getElementById("date-now") as HTMLInputElement;
-    let todaysDay = document.getElementById("day-now");
+    const todaysDate : HTMLInputElement = document.getElementById("date-now") as HTMLInputElement;
+    const todaysDay = document.getElementById("day-now");
    
 
     todaysDate.textContent = `${today.getDate()} ${
@@ -81,20 +81,20 @@ class Calender {
 
     this.GetMeetings(date);
 
-let selectDate : HTMLInputElement = document.getElementById("date-selected") as HTMLInputElement;
+const selectDate : HTMLInputElement = document.getElementById("date-selected") as HTMLInputElement;
     selectDate.addEventListener("input",  () => {
-     let searchDate  = selectDate.value;
+     const searchDate  = selectDate.value;
       date = selectDate.value;
-      let monthIndex = parseInt(date[6] + date[7]) - 1;
+      const monthIndex = parseInt(date[6] + date[7]) - 1;
       todaysDate.textContent = `${date[8]}${date[9]} ${month[monthIndex]} ${date[0]}${date[1]}${date[2]}${date[3]}`;
       this.GetMeetings(searchDate);
     });
   };
-};
+}
 
-var today;
-var date;
-let month = [
+let today;
+let date;
+const month = [
   "January",
   "February",
   "March",

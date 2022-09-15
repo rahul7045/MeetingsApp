@@ -26,3 +26,5 @@ function addMeeting(newMeeting : AddMeeting) {
       });
 
   } 
+
+  export {addMeeting};

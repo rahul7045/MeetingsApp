@@ -10,7 +10,7 @@ class RegisterValidation {
   form = document.querySelector("#register-form") as HTMLFormElement;
 
   validateUsename = () => {
-    let username = this.usernameEl.value.trim();
+    const username = this.usernameEl.value.trim();
     const formGroupEl = this.usernameEl.closest(".form-group") as HTMLElement;
     const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
     let error = "";

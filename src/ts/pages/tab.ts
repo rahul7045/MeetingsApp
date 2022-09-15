@@ -1,5 +1,6 @@
 function opentab(evt : Event, tab: string ) {
-  let i, tabcontent , tablinks;
+  let i;
+  let tabcontent , tablinks;
   
   tabcontent = document.getElementsByClassName("tabcontent") as HTMLCollectionOf<HTMLElement> ;
   for (i = 0; i < tabcontent.length; i++) {

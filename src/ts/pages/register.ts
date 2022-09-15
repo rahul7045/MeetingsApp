@@ -36,6 +36,6 @@ class Register  {
 
     this.addEventListeners();
   };
-};
+}
 
 export {Register}

@@ -9,7 +9,7 @@ class addMeetingValidation{
     form = document.querySelector('#add-meeting-form');
 
      ValidateMeetingName =() =>{
-        let name = this.nameEl.value.trim();
+        const name = this.nameEl.value.trim();
         const formGroupEl = this.nameEl.closest(".form-group") as HTMLElement;
         const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
         let error = "";
@@ -21,14 +21,14 @@ class addMeetingValidation{
     }
 
     ValidateTime =() => {
-        let start_time = this.start_timeEl.value;
-        let end_time = this.end_timeEl.value;
+        const start_time = this.start_timeEl.value;
+        const end_time = this.end_timeEl.value;
         const formGroupEl = this.end_timeEl.closest(".form-group") as HTMLElement;
         const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
         let error = "";
 
-        let start = start_time[0]+start_time[1];
-        let end =  end_time[0] + end_time[1];
+        const start = start_time[0]+start_time[1];
+        const end =  end_time[0] + end_time[1];
 
         if(end<start){
             error += "end time should not be less than start time"
@@ -40,7 +40,7 @@ class addMeetingValidation{
 
     
     ValidateDescription =() =>{
-        let desc = this.descriptionEl.value.trim();
+        const desc = this.descriptionEl.value.trim();
         const formGroupEl = this.descriptionEl.closest(".form-group") as HTMLElement;
         const messageEl = formGroupEl.querySelector(".message") as HTMLInputElement;
         let error = "";

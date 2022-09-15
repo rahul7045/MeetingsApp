@@ -17,10 +17,11 @@ const init = () => {
   (menuToggler as HTMLElement).addEventListener("click", function () {
     (nav as HTMLElement).classList.toggle("d-sm-none");
   });
-  // (logoutBtn as HTMLElement).addEventListener("click", function () {
-  //   localStorage.clear();
-  //   window.location.href = "./login.html";
-  // });
+  
+   (logoutBtn as HTMLElement).addEventListener("click", function () {
+     localStorage.clear();
+     window.location.href = "./login.html";
+   });
 };
 
 export default init;

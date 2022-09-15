@@ -2,15 +2,15 @@ import '../../scss/pages/teams.scss';
 import {getTeams , addTeamServices , excuseYourself , addMember} from "../services/teams";
 import { getUserID } from "../services/get-id";
 import Users from '../models/Users'
-let membersArray: Users[] = [];
+const membersArray: Users[] = [];
 import ITeams from '../models/Team' ;
 import init from './nav-menu';
 
-function appendMembers(member: Users) {
-  membersArray.push(member);
-  const memberNode = document.createTextNode(`,${member}`);
-  (document.querySelector(".member-list") as HTMLDivElement).append(memberNode);
-}
+// function appendMembers(member: Users) {
+//   membersArray.push(member);
+//   const memberNode = document.createTextNode(`,${member}`);
+//   (document.querySelector(".member-list") as HTMLDivElement).append(memberNode);
+// }
 
 class Teams {
   addTeamsList = document.querySelector(".members");
@@ -69,7 +69,7 @@ class Teams {
       (excuseYourselfBtn[idx] as HTMLButtonElement).addEventListener(
         "click",
         () => {
-          let teamid :string=team._id!; 
+          const teamid :string=team._id!; 
           excuseYourself(teamid).then(function () {
             (
               (excuseYourselfBtn[idx] as HTMLButtonElement).closest(
@@ -307,4 +307,4 @@ class Teams {
 }
 
 export {Teams};
-console.log(membersArray);
+// console.log(membersArray);

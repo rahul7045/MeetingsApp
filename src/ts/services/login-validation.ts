@@ -62,7 +62,7 @@ class LoginValidation {
         this.loginForm = document.getElementById("login-form") as HTMLFormElement;
         this.addEventListeners();
       };
-  };
+  }
   
 
 export {LoginValidation};

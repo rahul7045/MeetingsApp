@@ -18,7 +18,7 @@ class Meeting {
       const start  = (document.getElementById("start-time"))  as HTMLInputElement ;
       const end = (document.getElementById("end-time")) as HTMLInputElement;
 
-      let meeting = {
+      const meeting = {
         name: (document.getElementById("meeting-name") as HTMLInputElement).value.trim(),
         description: (document.getElementById("description") as HTMLInputElement).value.trim(),
         date: (document.getElementById("date") as HTMLInputElement).value,
@@ -55,7 +55,7 @@ class Meeting {
   
 
     init();
-    let user : HTMLElement = document.getElementById("user") as HTMLElement;
+    const user : HTMLElement = document.getElementById("user") as HTMLElement;
     user.textContent = ` ${localStorage.getItem("email")}`;
     //this.addEventListeners();
     
@@ -69,7 +69,7 @@ class Meeting {
     const tabLink1 = document.querySelector("#default-open");
     (tabLink1 as HTMLElement).addEventListener("click", (event) => {
       opentab(event, "filter");
-      var tab2 = new displayFilter();
+      const tab2 = new displayFilter();
       tab2.showSearchMeetings();
     });
     const tabLink2 = document.querySelector("#add-open");

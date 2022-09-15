@@ -35,6 +35,6 @@ class Login {
     
     this.addEventListener();
 }
-}; 
+} 
 
 export {Login}
