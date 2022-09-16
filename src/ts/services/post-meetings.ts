@@ -23,6 +23,7 @@ function addMeeting(newMeeting : AddMeeting) {
       .then(function (addMeetingResponse) {
         window.alert("Meeting is added successfully");
         console.log(addMeetingResponse.description);
+        return addMeetingResponse;
       });
 
   } 

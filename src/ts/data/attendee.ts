@@ -1,4 +1,5 @@
 const attendees =  [
+    
     {
         "userId": "62f0ca7fad71500015c8be2e",
         "email": "rehan.pathan@publicisgroupe.com"

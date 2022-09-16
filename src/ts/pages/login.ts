@@ -1,7 +1,7 @@
 import '../../scss/pages/LoginRegister.scss';
-
+import { LoginValidation } from '../services/login-validation';
 import { loginUser } from '../services/auth-login';
-
+import {loadPage } from '../index'
 class Login {
    LogDetails : HTMLElement | null = null;
 
@@ -19,7 +19,9 @@ class Login {
       loginUser(creds)
         .then(function (loginResponse) {
           console.log(loginResponse);
-          window.location.assign("./calendar.html");
+          history.pushState("" , "" , "/calendar.html");
+          loadPage(location.pathname);
+          //window.location.assign("./calendar.html");
          //location.reload();
         })
         
@@ -32,7 +34,8 @@ class Login {
 
   load = () => {
     this.LogDetails = document.getElementById( 'login-form' ) as HTMLFormElement;
-    
+     const loginValidation = new LoginValidation();
+     loginValidation.load();
     this.addEventListener();
 }
 } 

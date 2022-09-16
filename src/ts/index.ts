@@ -4,6 +4,7 @@ import {Calender} from './pages/calendar';
 import {displayFilter} from './pages/display-filter-meetings';
 import {Meeting} from './pages/meeting';
 import {Teams} from './pages/show-teams';
+import {isAuthenticated}  from './services/auth-login'
 //import {RegisterValidation} from './services/validation';
 //import {LoginValidation} from './services/login-validation';
 
@@ -21,7 +22,9 @@ interface Constructable<T> {
 interface Routes<T> {
     [key: string]: {
         template: string,
-        Controller: Constructable<T> | null
+        Controller: Constructable<T> | null,
+        auth: boolean
+
     }
 }
 
@@ -29,29 +32,46 @@ interface Routes<T> {
  * Setup routes
  */
 const routes : Routes<any>  = {
+    '/': {
+        template: 'login',
+        Controller: Login,
+        auth: false
+
+    },
     '/login.html': {
         template: 'login',
-        Controller: Login
+        Controller: Login,
+        auth: false
+
     },
     '/register.html': {
         template: 'register',
-        Controller: Register
+        Controller: Register,
+        auth: false
+
     },
     '/calendar.html': {
         template: 'home',
-        Controller: Calender
+        Controller: Calender,
+        auth: false
+
     },
     '/meetings.html': {
         template: 'meeting',
-        Controller: Meeting
+        Controller: Meeting,
+        auth: true
+
     },
     '/teams.html': {
         template: 'teams',
-        Controller: Teams
+        Controller: Teams,
+        auth: true
+
     },
     '*': {
         template: 'page-not-found',
-        Controller: null
+        Controller: null,
+        auth: false
     }
 };
 
@@ -82,6 +102,17 @@ const loadPage = ( pathname : string ) => {
 
     if( pathname in routes ) {
         route = routes[pathname];
+    }else{
+        route = routes['*'];
+
+    }
+
+    
+    if( route?.auth === true ) {
+        if( isAuthenticated() === false ) {
+            loadPage( '/login.html' );
+            return;
+        }
     }
 
     if( route?.template ) {
@@ -90,6 +121,8 @@ const loadPage = ( pathname : string ) => {
         const tpl = ( document.getElementById( route.template ) as HTMLTemplateElement ).innerHTML;
         root.innerHTML = tpl;
     }
+
+
 
     // initialize the page
     if( route?.Controller ) {
@@ -106,3 +139,5 @@ window.addEventListener( 'popstate', function() {
 } );
 
 loadPage( location.pathname );
+
+export {loadPage};

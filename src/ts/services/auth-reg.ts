@@ -19,7 +19,7 @@ function register(user : Register) {
     })
     .then(function (registerResponse) {
       //console.log("user added 2")
-       //alert("User Registered");
+       alert("User Registered");
       return registerResponse; 
     });
 }

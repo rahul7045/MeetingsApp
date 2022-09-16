@@ -1,3 +1,4 @@
+import { loadPage } from "../index";
 const init = () => {
 
   const menuToggler = document.querySelector(".menu-toggler");
@@ -20,7 +21,10 @@ const init = () => {
   
    (logoutBtn as HTMLElement).addEventListener("click", function () {
      localStorage.clear();
-     window.location.href = "./login.html";
+     history.pushState("" , "" , "/login.html");
+     loadPage(location.pathname)
+
+    // window.location.href = "./login.html";
    });
 };
 

@@ -25,7 +25,7 @@ const handlers = [
             ctx.json( meetings )
         );
     } ),
-    rest.post( 'https://mymeetingsapp.herokuapp.com/api/auth/login',( res,req,ctx ) => {
+    rest.post( 'https://mymeetingsapp.herokuapp.com/api/auth/login',( req,res,ctx ) => {
         return res(
             ctx.status( 200 ),
             ctx.json( {
@@ -36,7 +36,7 @@ const handlers = [
             } )
         );
     } ),
-    rest.post( 'https://mymeetingsapp.herokuapp.com/api/auth/register',( res,req,ctx ) => {
+    rest.post( 'https://mymeetingsapp.herokuapp.com/api/auth/register',( req,res,ctx ) => {
         return res(
             ctx.status( 200 )
             // ctx.json({
@@ -47,10 +47,10 @@ const handlers = [
             // })
         );
     } ),
-    rest.post( 'https://mymeetingsapp.herokuapp.com/api/meetings',( res,req,ctx ) => {
+    rest.post( 'https://mymeetingsapp.herokuapp.com/api/meetings',( req,res,ctx ) => {
         console.log(req);
         return res(
-            ctx.status( 201 ),
+           // ctx.status( 201 ),
             ctx.json(
                 {
                     name: "Google marketing campaign",

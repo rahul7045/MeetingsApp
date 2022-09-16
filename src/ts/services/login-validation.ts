@@ -1,5 +1,5 @@
 import {loginUser} from "./auth-login";
-
+import {loadPage} from '../index';
 import "../../scss/pages/loginRegister.scss";
 class LoginValidation {
   //loginForm: HTMLFormElement | null = null;
@@ -42,21 +42,24 @@ class LoginValidation {
         this.emailEl.addEventListener("blur",this.validateEmail);
         this.emailEl.addEventListener("input",this.validateEmail);
 
-        this.loginForm.addEventListener('submit',function(event){
-            const credentials = {
-                email: (
-                  document.getElementById("login-email") as HTMLInputElement).value.trim(),
-                password: (document.getElementById("login-password") as HTMLInputElement).value.trim(),
-              };
-              loginUser(credentials)
-          .then(function (loginResponse) {
-            console.log(loginResponse);
-            window.location.href = "./calendar.html";
-          })
-          .catch(function (error) {
-            alert("Incorrect Password!! Please enter your correct Password");
-          });
-        })   
+        // this.loginForm.addEventListener('submit',function(event){
+        //    event.preventDefault();
+        //     const credentials = {
+        //         email: (
+        //           document.getElementById("login-email") as HTMLInputElement).value.trim(),
+        //         password: (document.getElementById("login-password") as HTMLInputElement).value.trim(),
+        //       };
+        //       loginUser(credentials)
+        //       .then(function (loginResponse) {
+        //     console.log(loginResponse);
+        //     history.pushState("" , "" , "./calendar.html");
+        //     loadPage(location.pathname);
+        //   //  window.location.href = "./calendar.html";
+        //   })
+        //   .catch(function (error) {
+        //     alert("Incorrect Password!! Please enter your correct Password");
+        //   });
+        // })   
     }
     load = () => {
         this.loginForm = document.getElementById("login-form") as HTMLFormElement;

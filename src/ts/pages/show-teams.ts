@@ -6,11 +6,11 @@ const membersArray: Users[] = [];
 import ITeams from '../models/Team' ;
 import init from './nav-menu';
 
-// function appendMembers(member: Users) {
-//   membersArray.push(member);
-//   const memberNode = document.createTextNode(`,${member}`);
-//   (document.querySelector(".member-list") as HTMLDivElement).append(memberNode);
-// }
+function appendMembers(member: Users) {
+  membersArray.push(member);
+  const memberNode = document.createTextNode(`,${member}`);
+  (document.querySelector(".member-list") as HTMLDivElement).append(memberNode);
+}
 
 class Teams {
   addTeamsList = document.querySelector(".members");
@@ -110,7 +110,13 @@ class Teams {
   };
 
 
-    showUsersDropdown = () => {
+  showUsersDropdown = () => {
+    
+function appendMembers(member: Users) {
+  membersArray.push(member);
+  const memberNode = document.createTextNode(`,${member}`);
+  (document.querySelector(".member-list") as HTMLDivElement).append(memberNode);
+}
     let allUsersOptionsStr = "";
     let addTeamsListStr = "";
     this.allUsers.forEach(function (user) {
@@ -124,8 +130,7 @@ class Teams {
             <select style="width:40%" class= "select-input" id="member"> <option style="color:#999;">Select member</option>${allUsersOptionsStr}</select>
           </span>
           <button type="button" 
-          class ="add-btn"
-                  >add
+          onclick="appendMembers(this.closest('div').querySelector('.select-input').value)">add
           </button>
         </div>
         `;
@@ -134,6 +139,7 @@ class Teams {
 
     return allUsersOptionsStr;
   };
+
   getAllUsers = () => {
     return getUserID()
       .then((response) => {
@@ -145,14 +151,14 @@ class Teams {
       });
   };
 
+
+
   addNewTeam = () => {
     const addTeamForm = document.querySelector("#add-team");
-    // var users; //;
     (addTeamForm as HTMLElement).addEventListener("submit", (event) => {
       event.preventDefault();
 
       const selectInput = document.getElementById("add-member");
-      // console.log(selectInput.innerHTML);
 
       const team: ITeams = {
         name: (
@@ -184,9 +190,11 @@ class Teams {
             return newMember.email;
           });
 
-          
+          const addedNewTeam = document.createElement("div");
+          addedNewTeam.classList.add("card");
 
-          const addedNewTeam = `
+
+           addedNewTeam.innerHTML = `
         <div id="new-team-card">
               <div class="team-name">${addedTeam.name}</div>
               <div class="team-short-name">@${addedTeam.shortName}</div>
@@ -215,42 +223,32 @@ class Teams {
           `;
 
           const parentNode = document.querySelector(".card-collection");
-          const childNode = document.createElement("div");
-          childNode.innerHTML = addedNewTeam;
+          //const childNode = document.createElement("div");
+         // childNode.innerHTML = addedNewTeam;
 
           (parentNode as HTMLDivElement).insertBefore(
-            childNode,
+            addedNewTeam,
             document.getElementById("add-team")
           );
-          childNode.classList.add("card");
+          //childNode.classList.add("card");
           (document.getElementById("add-team") as HTMLDivElement).classList.add(
             "hide"
           );
           const excuseYourselfBtn = document.querySelector(
-            ".excuse-yourself-btn-new"
+            ".excuse-yourself-btn"
           );
-          const newTeam = document.getElementById("new-team-card");
+          //const newTeam = document.getElementById("new-team-card");
           (excuseYourselfBtn as HTMLButtonElement).addEventListener(
             "click",
             () => {
               console.log(addedTeam._id);
               excuseYourself(addedTeam._id).then(function () {
-                // (
-                //   (excuseYourselfBtn as HTMLButtonElement).closest(
-                //     ".new-team-card"
-                //   ) as HTMLDivElement
-                // ).remove();
-                console.log(
-                  (excuseYourselfBtn as HTMLButtonElement).closest(
-                    ".card"
-                  ) as HTMLDivElement
-                );
-                (newTeam as HTMLDivElement).remove();
+                console.log(addedTeam._id);
                 (
-                  (excuseYourselfBtn as HTMLButtonElement).closest(
-                    ".card"
-                  ) as HTMLDivElement
-                ).remove();
+                  excuseYourself(addedTeam._id).then(function () {
+                    (addedNewTeam as HTMLDivElement).remove();
+                  })
+                );
               });
             }
           );
@@ -301,7 +299,7 @@ class Teams {
     this.allUsers.forEach(function (user) {
       allUsersOptionsStr += `<option value="${user.email}">${user.email}</option> `;
     });
-    this.addNewTeam();
+   // this.addNewTeam();
     
   };
 }

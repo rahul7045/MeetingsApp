@@ -35,10 +35,20 @@ function getName() {
 function getEmail() {
   return localStorage.getItem("email");
 }
+
+
+const isAuthenticated = () => {
+  if( localStorage.getItem( 'token' ) === null ) {
+      return false;
+  }
+
+  return true;
+};
  
 
 
 export {
+  isAuthenticated,
   loginUser,
   getToken,
   getName,

@@ -1,6 +1,7 @@
 import '../../scss/pages/LoginRegister.scss';
 
 import { register } from '../services/auth-reg';
+import {RegisterValidation} from '../services/validation';
 
 class Register  {
   // let Register;
@@ -34,6 +35,8 @@ class Register  {
   load = () => {
     this.registerForm = document.getElementById("register-form");
 
+    const registerValidate = new RegisterValidation();
+    registerValidate.load(); 
     this.addEventListeners();
   };
 }

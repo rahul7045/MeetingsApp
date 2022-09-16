@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "start": "http-server ./public -c-1 -p 4000 --proxy http://localhost:4000?",
     "test": "jest --coverage",
     "lint": "eslint . --ext .ts",

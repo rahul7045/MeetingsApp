@@ -31,7 +31,7 @@ class Meeting {
           minutes: parseInt(end.value[3] + end.value[4]),
         },
         attendees: [
-          "basavaraj@example.com",
+          "rahul@example.com",
         ],
       };
 
