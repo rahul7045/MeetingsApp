@@ -48,9 +48,9 @@ const handlers = [
         );
     } ),
     rest.post( 'https://mymeetingsapp.herokuapp.com/api/meetings',( req,res,ctx ) => {
-        console.log(req);
+        console.log( req );
         return res(
-           // ctx.status( 201 ),
+            // ctx.status( 201 ),
             ctx.json(
                 {
                     name: "Google marketing campaign",

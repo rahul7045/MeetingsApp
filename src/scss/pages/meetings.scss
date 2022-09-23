@@ -1,3 +1,5 @@
+@use '../mixins/meet' as mixinBorder;
+
 main {
     width: 90%;
     margin: 0 auto;
@@ -16,8 +18,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1em;
-    border: 1px solid black;
-    border-radius: 5px;
+    @include mixinBorder.border-radius( 5px );
     padding: 1em;
   }
   .excuse-yourself-btn {

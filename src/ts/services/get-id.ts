@@ -1,26 +1,26 @@
 
-  function getUserID() {
-    return fetch(`https://mymeetingsapp.herokuapp.com/api/users`, {
-      method: "GET",
+function getUserID() {
+    return fetch( `https://mymeetingsapp.herokuapp.com/api/users`, {
+        method: "GET",
 
-      headers: {
-        Authorization: `${localStorage.getItem(`token`)}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error(response.statusText);
+        headers: {
+            Authorization: `${localStorage.getItem( `token` )}`,
+            "Content-Type": "application/json"
         }
+    } )
+        .then( function ( response ) {
+            if ( !response.ok ) {
+                throw new Error( response.statusText );
+            }
 
-        return response.json();
-      })
-      .then(function (usersResponse) {
+            return response.json();
+        } )
+        .then( function ( usersResponse ) {
   
-        return usersResponse;
+            return usersResponse;
 
-      });
-  }
-  export {getUserID}
+        } );
+}
+export {getUserID}
 
   

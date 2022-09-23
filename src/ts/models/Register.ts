@@ -5,5 +5,5 @@ interface Register{
     password:string,
    }
    
-   export default Register;
+export default Register;
    

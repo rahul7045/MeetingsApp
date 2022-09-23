@@ -130,7 +130,7 @@ const loadPage = ( pathname : string ) => {
         setupLinks();
     }
 }
-loadPage(location.pathname);
+loadPage( location.pathname );
 
 // handle popstate event (fired when back/forward button is clicked)
 window.addEventListener( 'popstate', function() {
