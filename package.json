@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predeploy":"npm run buld",
+    "predeploy":"npm run build",
     "deploy":"gh-pages -d build",
     "build": "webpack --watch",
     "start": "http-server ./public -c-1 -p 4000 --proxy http://localhost:4000?",
