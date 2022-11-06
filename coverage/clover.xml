@@ -1,98 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1663218714987" clover="3.2.0">
-  <project timestamp="1663218714987" name="All files">
-    <metrics statements="82" coveredstatements="40" conditionals="6" coveredconditionals="3" methods="31" coveredmethods="14" elements="119" coveredelements="57" complexity="0" loc="82" ncloc="82" packages="4" files="10" classes="10"/>
+<coverage generated="1667654821813" clover="3.2.0">
+  <project timestamp="1667654821813" name="All files">
+    <metrics statements="49" coveredstatements="34" conditionals="10" coveredconditionals="4" methods="23" coveredmethods="14" elements="82" coveredelements="52" complexity="0" loc="49" ncloc="49" packages="3" files="9" classes="9"/>
     <package name="data">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="meetings.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\data\meetings.ts">
+      <file name="meetings.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\data\meetings.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
       </file>
-      <file name="team.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\data\team.ts">
+      <file name="team.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\data\team.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
       </file>
-      <file name="users.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\data\users.ts">
+      <file name="users.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\data\users.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
       </file>
     </package>
     <package name="mocks">
-      <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="3"/>
-      <file name="handler.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\mocks\handler.ts">
-        <metrics statements="11" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="3"/>
+      <metrics statements="12" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="4"/>
+      <file name="handler.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\mocks\handler.ts">
+        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="4"/>
         <line num="7" count="4" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
         <line num="103" count="0" type="stmt"/>
       </file>
-      <file name="server.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\mocks\server.ts">
+      <file name="server.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\mocks\server.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="4" type="stmt"/>
       </file>
     </package>
-    <package name="pages">
-      <metrics statements="42" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="3"/>
-      <file name="calendar.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\pages\calendar.ts">
-        <metrics statements="31" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="5" type="stmt"/>
-        <line num="14" count="14" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="26" count="5" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="97" count="1" type="stmt"/>
-      </file>
-      <file name="nav-menu.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\pages\nav-menu.ts">
-        <metrics statements="11" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-      </file>
-    </package>
     <package name="services">
-      <metrics statements="25" coveredstatements="19" conditionals="6" coveredconditionals="3" methods="11" coveredmethods="8"/>
-      <file name="auth-login.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\services\auth-login.ts">
-        <metrics statements="11" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="3"/>
+      <metrics statements="34" coveredstatements="24" conditionals="10" coveredconditionals="4" methods="14" coveredmethods="10"/>
+      <file name="auth-login.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\services\auth-login.ts">
+        <metrics statements="15" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="7" coveredmethods="3"/>
         <line num="5" count="1" type="stmt"/>
         <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
@@ -104,17 +53,29 @@
         <line num="30" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
       </file>
-      <file name="get-calendar.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\services\get-calendar.ts">
+      <file name="auth-reg.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\services\auth-reg.ts">
+        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="get-calendar.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\services\get-calendar.ts">
         <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
-        <line num="3" count="2" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
       </file>
-      <file name="post-meetings.ts" path="C:\Users\rahpujar\Desktop\Projects\meetings-app-rahpujar\src\ts\services\post-meetings.ts">
+      <file name="post-meetings.ts" path="D:\Sapient\Desktop\Projects\meetings-app-rahpujar\src\ts\services\post-meetings.ts">
         <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="5" count="1" type="stmt"/>
         <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>

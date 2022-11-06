@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/utils.css" />
     <link rel="stylesheet" href="../css/nav-menu.css" />
-    <link
-      rel="stylesheet"
-      href="external/fontawesome-free-6.1.2-web/css/all.min.css"
-    />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <script defer src="dist/main.bundle.js"></script>
     <title>Document</title>
@@ -24,9 +23,9 @@
   
           <span>My Meetings</span>
   
-          <button class="menu-toggler">
-            <i class="fa fa-bars"></i>
-          </button>
+          <span  class="menu-toggler">
+            <i cursor="pointer" class="fa fa-bars"></i>
+          </span>
   
         </div>
   
@@ -57,8 +56,8 @@
             <span id="day-now"></span>
           </div>
           <div>
-            <label for="date-selected" class="visually-hidden"></label>
-            <input type="date" id="date-selected" name="date" />
+             <!-- <label for="date-selected" class="visually-hidden"></label>  -->
+             <input type="date" id="date-selected" name="date" aria-label="date-selected"  />
           </div>
         </div>
       </div>
@@ -175,7 +174,7 @@
     </template>
 
     <template id="login">
-      <div class="login-page">
+      <main class="login-page">
       <h1 class="align-center">Login Form</h1>
       <form
         action="./calendar.html"
@@ -184,7 +183,7 @@
       >
         <div class="container">
           <div class="form-group">
-          <label for="email">Email</label>
+          <label for="login-email">Email</label>
           <input
             type="email"
             id="login-email"
@@ -196,7 +195,7 @@
           </div>
 
           <div class="form-group">
-          <label for="password">Password</label>
+          <label for="login-password">Password</label>
           <input
             type="password"
             id="login-password"
@@ -215,7 +214,7 @@
           </div>
         </div>
       </form>
-      </div>
+      </main>
     </template>
 
     <template id="meeting">
@@ -223,9 +222,9 @@
       <header>
         <div class="menu d-lg-none">
           <span>My Meetings</span>
-          <button class="menu-toggler">
-            <i class="fa fa-bars"></i>
-          </button>
+          <div class="menu-toggler">
+            <i cursor="pointer" class="fa fa-bars"></i>
+          </div>
         </div>
         <nav class="navbar d-sm-none">
           <ul class="left-nav list-unstyle">
@@ -263,7 +262,7 @@
           <!--filter/search meetings-->
           <div id="filter" class="tabcontent">
             <div class="form-group form">
-              <h1>Search for meetings</h1>
+              <h1 class="heading-meeting">Search for meetings</h1>
               <hr />
               <form
                 class="container"
@@ -401,9 +400,9 @@
       <header>
         <div class="menu d-lg-none">
           <span>My Meetings</span>
-          <button class="menu-toggler">
+          <div class="menu-toggler">
             <i class="fa fa-bars"></i>
-          </button>
+          </div>
         </div>
         <nav class="navbar d-sm-none">
           <ul class="left-nav list-unstyle">
@@ -421,10 +420,12 @@
           </ul>
         </nav>
       </header>
+
       <main>
-        <h1>Teams</h1>
+      <h1>Teams</h1>
         <hr />
         <div>View and edit teams you are part of</div>
+        <div class="loading-message"></div>
         <div class="card-collection">
           <form
             method="post"
@@ -432,37 +433,31 @@
             id="add-team"
             class="team-form hide card"
           >
-            <div>
-              <label for="team-name"></label>
-              <input
-                type="text"
-                name="team-name"
-                id="team-name"
-                placeholder="team name"
-                required
-              />
-            </div>
-            <div class="team-short-name add-team-contents">
-              <label for="team-short-name"></label>
-              <input
-                type="text"
-                name="team-short-name"
-                id="team-short-name"
-                placeholder="team short name"
-                required
-              />
-            </div>
-            <div class="team-description add-team-contents">
-              <textarea
-                name="team-description"
-                id="team-description"
-                placeholder="Provide a description for the team"
-              ></textarea>
-            </div>
-            <div class="members"></div>
-            <button type="submit" class="add-btn">Add Team</button>
+            <label class="visually-hidden" for="team-name">Team Name</label>
+            <input
+              type="text"
+              name="team-name"
+              id="team-name"
+              placeholder="team name"
+            />
+            <div class="message"></div>
+
+            <label class="visually-hidden" for="team-short-name">Team short name</label>
+            <input
+              type="text"
+              name="team-short-name"
+              id="team-short-name"
+              placeholder="team short name"
+            />
+            <div class="message"></div>
+            <label class="visually-hidden" for="team-description">Team Description</label>
+            <textarea
+              name="team-description"
+              id="team-description"
+              placeholder="Provide a description for the team"
+            ></textarea>
           </form>
-  
+
           <div class="add-team card">
             <button class="plus-btn" type="button">
               <a class="add-team-toggler">
@@ -470,16 +465,15 @@
               </a>
             </button>
           </div>
-
         </div>
       </main>
       </div>
     </template>
 
     <template id="register">
-      <div class="login-page">
+      <main class="login-page">
       <h1 class="align-center">Registration Form</h1>
-      <form
+          <form
             class="container"
             id="register-form"
             action="https://mymeetingsapp.herokuapp.com/api/auth/register"
@@ -490,7 +484,7 @@
               <div>
                 <input type="text" id="name" name="name" placeholder="Name" />
               </div>
-              <div class="message"></div>
+              <div class="message" id="red"></div>
             </div>
   
             <div class="form-group">
@@ -498,7 +492,7 @@
               <div>
                 <input type="text" id="email" name="email" placeholder="Email" />
               </div>
-              <div class="message"></div>
+              <div class="message" id="red"></div>
             </div>
   
             <div class="form-group">
@@ -511,7 +505,7 @@
                   placeholder="Password"
                 />
               </div>
-              <div class="message"></div>
+              <div class="message" id="red"></div>
             </div>
   
             <div class="form-group">
@@ -524,14 +518,14 @@
                   placeholder="Confirm Password"
                 />
               </div>
-              <div class="message"></div>
+              <div class="message" id="red"></div>
             </div>
             <button type="submit">Register</button>
             <div class="hint">
               <p>Don't have an account? <a href="login.html">Log In</a></p>
             </div>
           </form>
-      </div>
+      </main>
     </template>
     
   </body>
